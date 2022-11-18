@@ -10,6 +10,9 @@ When we build software products our goal is not just to make them work, they sho
 
 ### Materials for the section
 - **Read**: [Web vitals](https://web.dev/vitals/)
+- **Read**: [Vue.js performance best practices](https://vuejs.org/guide/best-practices/performance.html)
+- **Read**: [Router lazy loading](https://router.vuejs.org/guide/advanced/lazy-loading.html)
+- **Practice**: [Rollup plugin visualizer](https://www.npmjs.com/package/rollup-plugin-visualizer)
 - **Practice**: [Google page speed insights](https://pagespeed.web.dev/)
 
 ### Video Material
@@ -19,6 +22,12 @@ Youtube link
 - Branch name: [`section-10-performance`](https://github.com/Softonix/softonix-incubator/tree/section-10-performance)
 - Tag1: `#section-10-performance-start`
   - Analyze Softonix website using google page speed tool.
+  - Installed package: rollup plugin visualizer
+  - Preapared AsyncExample component
+
+- Tag2: `#section-10-performance-end`
+  - Implemented required optimizations.
+  - Analyze Softonix website using google page speed tool.
   - Images (Small size of each image, relevant pixel size, lazy loading via JS, lazy loading attribute, on mobile we should not download images that are hidden on mobile)
   - Fonts (Small amount, preload, inline in CSS)
   - CSS (Small amount, use PurgeCSS to remove unused CSS or Tailwind JIT).
@@ -27,6 +36,3 @@ Youtube link
   - 3rd party JS (TreeShaking, Postpone if possible, use new PartyTown as experiment, remove language packages like in moment.js)
   - Vue Optimization (VirtualLists for rendering, Promise.all for API, Not make reactive variables for huge nested objects).
   - **Infrastructure optimization** (Implement gzip/brotli compression, caching of static assets)
-
-- Tag2: `#section-10-performance-end`
-  - Implemented required optimizations.
