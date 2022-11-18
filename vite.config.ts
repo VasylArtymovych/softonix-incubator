@@ -14,7 +14,7 @@ export default defineConfig((config) => ({
     ComponentsBuilder(config),
     ImportsBuilder(config),
     visualizer({
-      open: false,
+      open: true,
       gzipSize: true
     })
   ],

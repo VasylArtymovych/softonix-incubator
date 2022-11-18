@@ -18,7 +18,7 @@
     </el-button>
   </div>
 
-  <!-- <AsyncExample v-if="!loading" /> -->
+  <AsyncExample v-if="!loading" />
 
   <div class="grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))] grid gap-5 my-5">
     <ContactItem
@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts" setup>
-// const AsyncExample = defineAsyncComponent(() => import('./components/AsyncExample.vue'))
+const AsyncExample = defineAsyncComponent(() => import('./components/AsyncExample.vue'))
 
 const { $routeNames } = useGlobalProperties()
 

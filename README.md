@@ -7,6 +7,7 @@ When we build software products our goal is not just to make them work, they sho
 - Google Pagespeed Insights tool
 - Describe key items of performance optimization checklist
 - Bundle analyzer check
+- **Homework**: implement component for lazy loading images: `<LazyImg />`
 
 ### Materials for the section
 - **Read**: [Web vitals](https://web.dev/vitals/)
@@ -36,3 +37,8 @@ Youtube link
   - 3rd party JS (TreeShaking, Postpone if possible, use new PartyTown as experiment, remove language packages like in moment.js)
   - Vue Optimization (VirtualLists for rendering, Promise.all for API, Not make reactive variables for huge nested objects).
   - **Infrastructure optimization** (Implement gzip/brotli compression, caching of static assets)
+
+### Homework
+This section includes homework. You need to fork this repo, finish homework in your repo, push your changes to origin and send URL with your forked repo and completed task to related person.
+
+- Task #1. Implement component for lazy loading images: `<LazyImg />`. Component should start loading of the img only when user's viewport is 300px above the img or less. Component should render the skeleton animation during the img loading and has error handling - when image fails to load, it should render placeholder image instead of broken one.
