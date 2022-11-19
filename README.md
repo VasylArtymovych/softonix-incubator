@@ -17,7 +17,7 @@ When we build software products our goal is not just to make them work, they sho
 - **Practice**: [Google page speed insights](https://pagespeed.web.dev/)
 
 ### Video Material
-Youtube link
+[Youtube link](https://youtu.be/fciI7n4vkQc)
 
 ### Section Playground
 - Branch name: [`section-10-performance`](https://github.com/Softonix/softonix-incubator/tree/section-10-performance)
