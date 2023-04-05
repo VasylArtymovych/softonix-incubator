@@ -13,4 +13,15 @@ export const arrayHandler = (num) => {
 
 const array = [1, 2, 3, 4, 5]
 
-console.log(array)
+const promiseChaining = array.reduce((promise, num) => {
+  return promise.then(() => arrayHandler(num))
+}, Promise.resolve(''))
+
+const promiseChainingAsync = array.reduce(async (promise, num) => {
+  await promise
+  promise = await arrayHandler(num)
+  return promise
+}, Promise.resolve(''))
+
+promiseChaining.then((data) => console.log(data))
+promiseChainingAsync.then(data => console.log(data))

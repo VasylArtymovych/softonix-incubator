@@ -5,7 +5,19 @@ function sum (a, b) { return a + b } // for test
 
 // eslint-disable-next-line
 function memoize (fn) {
-  // fn ваш код тут...
+  const hashMap = new Map()
+
+  return function (...args) {
+    const key = args.toString()
+
+    if (hashMap.get(key)) {
+      return hashMap.get(key)
+    }
+
+    const result = fn.call(this, ...args)
+    hashMap.set(key, result)
+    return result
+  }
 }
 
 // приклад виконання вашого коду
