@@ -2,6 +2,7 @@
 // та при повторному виклику лише повертає вже закешований результат.
 
 function sum (a, b) { return a + b } // for test
+function multiply (a, b, c) { return a * b * c } // for test
 
 // eslint-disable-next-line
 function memoize (fn) {
@@ -11,6 +12,7 @@ function memoize (fn) {
     const key = args.toString()
 
     if (hashMap.get(key)) {
+      console.log('memoized data')
       return hashMap.get(key)
     }
 
@@ -22,7 +24,12 @@ function memoize (fn) {
 
 // приклад виконання вашого коду
 const sumMemoized = memoize(sum)
+const multiplyMemoized = memoize(multiply)
 
-sumMemoized(1, 3) // результат 4
-sumMemoized(3, 3) // результат 6
-sumMemoized(1, 3) // результат 4, відбулось повторне виконання, результат повернуто з кешу без виклику додавання
+console.log(sumMemoized(1, 3)) // результат 4
+console.log(sumMemoized(3, 3)) // результат 6
+console.log(sumMemoized(1, 3)) // результат 4, відбулось повторне виконання, результат повернуто з кешу без виклику додавання
+console.log('-----------------------')
+console.log(multiplyMemoized(1, 2, 3))
+console.log(multiplyMemoized(2, 2, 2))
+console.log(multiplyMemoized(1, 2, 3))
