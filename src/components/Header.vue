@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white fixed top-0 left-0 right-0">
+  <div class="bg-white-smooth fixed z-50 top-0 left-0 right-0">
     <!-- Bounding container-->
     <MainContainer
       class=" py-6 text-primary font-nav md:flex justify-between items-center relative"
@@ -23,7 +23,7 @@
       <!--Burger menu-->
       <div
         class="md:flex justify-between items-center grow pb-6 md:pb-0 w-full sm:w-6/12 md:w-auto
-        absolute z-50 md:static top-[83px] transition-all duration-300 ease-in bg-white"
+        absolute z-40 md:static top-[83px] transition-all duration-300 ease-in bg-white-smooth"
         :class="[isMenuOpen ? 'right-0' : 'right-[-100%]']"
       >
         <!--Nav list-->

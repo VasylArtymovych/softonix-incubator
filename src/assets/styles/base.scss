@@ -23,6 +23,8 @@ a {
 
 img, svg {
   display: initial;
+  max-width: 100%;
+  height: auto;
 }
 
 @media (hover: none) and (pointer: coarse) and (max-width: 767px) {

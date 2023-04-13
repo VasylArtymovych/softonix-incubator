@@ -14,14 +14,14 @@ module.exports = {
       secondary: '#5B5F62',
       nav: '#2E476B',
       accent: '#F66F4D',
-
       white: '#ffffff',
-      'white-light': '#FDFEFF',
-      'white-smooth': '#EAEAEB',
+      'white-light': '#FDFEFD',
+      'white-smooth': 'whitesmoke',
+      gray: '#939597',
+      'gray-medium': '#5B5F62',
 
       'gray-light': '#f3f4f6',
       'gray-ultra-light': '#e5e7eb',
-      'gray-medium': '#9ca3af',
       'gray-dark': '#374151'
     },
     fontFamily: {
@@ -35,6 +35,9 @@ module.exports = {
       lg: '1024px',
       xl: '1280px',
       '2xl': '1440px'
+    },
+    letterSpacing: {
+      widest: '.2em'
     },
 
     extend: {
