@@ -9,7 +9,9 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Button: typeof import('./../src/components/Button.vue')['default']
     CardList: typeof import('./../src/components/CardList.vue')['default']
+    Categories: typeof import('./../src/components/Categories.vue')['default']
     Compute: typeof import('./../src/components/Compute.vue')['default']
+    Container: typeof import('./../src/components/Container.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']

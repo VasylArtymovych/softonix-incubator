@@ -1,16 +1,17 @@
 <template>
-  <div class="">
-    <div
-      class=" py-6  px-6 mx-auto text-primary md:flex justify-between items-center lg:px-[100px] xl:px-[135px]
-      2xl:w-[1440px] relative"
+  <div class="bg-white fixed top-0 left-0 right-0">
+    <!-- Bounding container-->
+    <MainContainer
+      class=" py-6 text-primary font-nav md:flex justify-between items-center relative"
     >
+      <!--Logo-->
       <div class="flex items-center pr-9 lg:pr-[72px]">
         <svg class="w-[42px] h-[35px] fill-inherit mr-[6px]">
           <use href="../assets/images/symbol-defs.svg#icon-logo-svg" />
         </svg>
         <span class=" font-logo text-xl ">Salty</span>
       </div>
-
+      <!--Burger menu button-->
       <button class=" absolute md:hidden top-[24px] right-[24px]" @click="()=> isMenuOpen = !isMenuOpen">
         <svg v-show="!isMenuOpen" class="w-[42px] h-[35px] fill-iherit">
           <use href="../assets/images/symbol-defs.svg#icon-burger-svg" />
@@ -19,13 +20,14 @@
           <use href="../assets/images/symbol-defs.svg#icon-cross-svg" />
         </svg>
       </button>
-
+      <!--Burger menu-->
       <div
         class="md:flex justify-between items-center grow pb-6 md:pb-0 w-full sm:w-6/12 md:w-auto
-        absolute md:static top-[83px] duration-300 ease-in"
+        absolute z-50 md:static top-[83px] transition-all duration-300 ease-in bg-white"
         :class="[isMenuOpen ? 'right-0' : 'right-[-100%]']"
       >
-        <ul class="md:flex gap-9 text-nav">
+        <!--Nav list-->
+        <ul class="md:flex gap-6 lg:gap-9 text-nav">
           <li
             v-for="name in pageNames" :key="name"
             class=" py-3 md:py-0 text-center md:text-left hover:text-accent hover:bg-gray-ultra-light
@@ -40,8 +42,9 @@
             >{{ name }}</a>
           </li>
         </ul>
+        <!--BookNow button-->
         <CustomButton
-          class="w-[170px] h-[54px] text-accent border-accent hover:bg-accent hover:text-white mt-3 md:mt-0
+          class="w-[170px] h-[54px] font-medium  text-accent border-accent hover:bg-accent hover:text-white mt-3 md:mt-0
           mx-auto md:mx-0"
         >
           Book Now
@@ -50,12 +53,13 @@
           </svg>
         </CustomButton>
       </div>
-    </div>
+    </MainContainer>
   </div>
 </template>
 
 <script lang="ts" setup>
 import CustomButton from '@/components/Button.vue'
+import MainContainer from '@/components/Container.vue'
 
 const pageNames = ['Home', 'About us', 'Destination', 'Tours', 'Blog']
 const activePage = ref('Home')

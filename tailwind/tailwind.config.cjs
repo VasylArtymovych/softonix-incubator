@@ -15,7 +15,10 @@ module.exports = {
       nav: '#2E476B',
       accent: '#F66F4D',
 
-      gray: '#6b7280',
+      white: '#ffffff',
+      'white-light': '#FDFEFF',
+      'white-smooth': '#EAEAEB',
+
       'gray-light': '#f3f4f6',
       'gray-ultra-light': '#e5e7eb',
       'gray-medium': '#9ca3af',
@@ -26,7 +29,6 @@ module.exports = {
       nav: ['Poppins', 'sans-serif'],
       logo: ['Sen', 'sans-serif']
     },
-
     screens: {
       sm: '640px',
       md: '768px',
@@ -34,7 +36,9 @@ module.exports = {
       xl: '1280px',
       '2xl': '1440px'
     },
-    extend: {}
+
+    extend: {
+    }
   },
   plugins: []
 }
