@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Adventures: typeof import('./../src/components/Adventures.vue')['default']
     Button: typeof import('./../src/components/Button.vue')['default']
     CardList: typeof import('./../src/components/CardList.vue')['default']
     Categories: typeof import('./../src/components/Categories.vue')['default']
@@ -19,13 +20,16 @@ declare module '@vue/runtime-core' {
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElOption: typeof import('element-plus/es')['ElOption']
-    Features: typeof import('./../src/components/Features.vue')['default']
     Header: typeof import('./../src/components/Header.vue')['default']
     Hero: typeof import('./../src/components/Hero.vue')['default']
+    Popular: typeof import('./../src/components/Popular.vue')['default']
+    PopularDestination: typeof import('../src/components/Popular.vue')['default']
     Portal: typeof import('./../src/plugins/portal/Portal.vue')['default']
     PortalTarget: typeof import('./../src/plugins/portal/PortalTarget.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SectionTitle: typeof import('./../src/components/SectionTitle.vue')['default']
+    Top: typeof import('./../src/components/Top.vue')['default']
   }
   export interface ComponentCustomProperties {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']

@@ -4,7 +4,9 @@
     <div class="flex justify-between">
       <!--Categories title wrapper-->
       <div class="2xl:pb-[60px]">
-        <h2 class="font-semibold 2xl:text-[56px] leading-[1] 2xl:pb-6">Categories</h2>
+        <SectionTitle class="leading-[1] 2xl:pb-6">
+          Categories
+        </SectionTitle>
         <p class="2xl:text-base leading-[1.62] 2xl:w-[370px]">
           Here are lots of interesting destinations to visit, but don’t be confused—they’re
           already grouped by category.
@@ -14,17 +16,17 @@
       <div class="flex gap-4">
         <div
           class="2xl:w-[54px] 2xl:h-[54px] border border-primary rounded-full flex justify-center items-center
-        hover:bg-primary "
+        hover:bg-primary focus:bg-primary"
         >
-          <svg class="w-[7px] h-[10px] lg:w-[9px] lg:h-[13px] fill-primary hover:fill-white">
+          <svg class="w-[7px] h-[10px] lg:w-[9px] lg:h-[13px] fill-primary hover:fill-white focus:fill-white">
             <use href="../assets/images/symbol-defs.svg#icon-arrow-left-svg" />
           </svg>
         </div>
         <div
           class="2xl:w-[54px] 2xl:h-[54px] border border-primary rounded-full flex justify-center items-center
-        hover:bg-primary "
+        hover:bg-primary focus:bg-primary"
         >
-          <svg class="w-[7px] h-[10px] lg:w-[9px] lg:h-[13px] fill-primary hover:fill-white">
+          <svg class="w-[7px] h-[10px] lg:w-[9px] lg:h-[13px] fill-primary hover:fill-white focus:fill-white">
             <use href="../assets/images/symbol-defs.svg#icon-arrow-right-svg" />
           </svg>
         </div>
@@ -43,6 +45,7 @@
 
 <script lang="ts" setup>
 import MainContainer from '@/components/Container.vue'
+import SectionTitle from './SectionTitle.vue'
 import Pic1 from '../assets/images/categories-pic-1.png'
 import Pic2 from '../assets/images/categories-pic-2.png'
 import Pic3 from '../assets/images/categories-pic-3.png'

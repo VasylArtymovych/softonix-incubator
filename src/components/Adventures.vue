@@ -1,5 +1,5 @@
 <template>
-  <MainContainer class="flex justify-between lg:py-[58px] ">
+  <MainContainer class="flex justify-between 2xl:pb-[58px] 2xl:pt-[106px]">
     <!--Left wrapper-->
     <div class="relative 2xl:w-[490px] 2xl:h-[562px] 2xl:mt-12">
       <img src="../assets/images/features-man-with-camera.png" alt="man-with-camera" class="block">
@@ -40,22 +40,25 @@
     <!--Right wrapper-->
     <div class="w-[538px] 2xl:mt-[110px]">
       <!--Pre title-->
-      <h4 class="font-semibold text-[20px] leading-[1] tracking-widest text-accent">
+      <h4 class="font-semibold text-[20px] leading-[1] tracking-widest text-accent 2xl:pb-5">
         Our Experience
       </h4>
       <!--Section title-->
-      <h2>
+      <SectionTitle class=" 2xl:pb-5">
         Our Stories Have Adventures
-      </h2>
-      <p class="">
+      </SectionTitle>
+      <p class="text-base leading-[1.62] 2xl:mb-10 2xl:max-w-[460px] text-secondary">
         We are experienced in bringing adventures to stay their journey, with all outdoor destinations
         in the world as our specialties. Start your adventure now! Nature has already called you!
       </p>
       <!--Bottom section-->
-      <div>
-        <div v-for="item in bottomText" :key="item.title">
-          <p>{{ item.title }}</p>
-          <p>{{ item.text }}</p>
+      <div class="flex justify-between">
+        <div
+          v-for="item in bottomText" :key="item.title" class="2xl:w-[166px] 2xl:h-[178px] 2xl:p-[26px] 2xl:pt-[30px]
+        rounded-[14px] bg-white"
+        >
+          <p class="font-semibold 2xl:text-[46px] leading-[1] text-accent 2xl:mb-[18px]">{{ item.title }}</p>
+          <p class="2xl:text-[21px] leading-[1.38] text-gray">{{ item.text }}</p>
         </div>
       </div>
     </div>
@@ -64,6 +67,7 @@
 
 <script lang="ts" setup>
 import MainContainer from '@/components/Container.vue'
+import SectionTitle from './SectionTitle.vue'
 
 const bottomText = [
   { title: '12K+', text: 'Succes Journey' },
