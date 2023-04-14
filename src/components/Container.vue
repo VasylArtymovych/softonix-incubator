@@ -1,6 +1,6 @@
 <template>
   <div
-    class="px-6 mx-auto md:px-[36px] 2xl:px-[135px] xl:max-w-[1440px] bg-white-smooth"
+    class="px-6 mx-auto md:px-[36px] xl:px-[100px] 2xl:px-[135px] xl:max-w-[1440px] bg-white-smooth"
   >
     <slot />
   </div>
