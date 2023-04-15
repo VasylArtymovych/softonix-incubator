@@ -1,22 +1,22 @@
 <template>
-  <Container class="2xl:pt-[82px] 2xl:pb-[50px]">
+  <Container class=" pt-[50px] 2xl:pt-[82px] pb-4 2xl:pb-[50px]">
     <!--Popular title and btns wrapper-->
-    <div class="flex justify-between 2xl:pb-[35px]">
-      <SectionTitle class="2xl:w-[400px]">
+    <div class="md:flex justify-between items-center w-[300px] md:w-full  mx-auto md:mx-0 mb-3 lg:mb-6 2xl:mb-[35px]">
+      <SectionTitle class="md:w-[300px] lg:w-[400px]">
         Find Popular Destination
       </SectionTitle>
       <!--Popular btns wrapper-->
       <div class="flex gap-4">
         <div
-          class="2xl:w-[54px] 2xl:h-[54px] border border-primary rounded-full flex justify-center items-center
-        hover:bg-primary focus:bg-primary"
+          class="ml-auto w-6 h-6 lg:w-[54px] lg:h-[54px] border border-primary rounded-full flex justify-center
+          items-center hover:bg-primary focus:bg-primary"
         >
           <svg class="w-[7px] h-[10px] lg:w-[9px] lg:h-[13px] fill-primary hover:fill-white focus:fill-white">
             <use href="../assets/images/symbol-defs.svg#icon-arrow-left-svg" />
           </svg>
         </div>
         <div
-          class="2xl:w-[54px] 2xl:h-[54px] border border-primary rounded-full flex justify-center items-center
+          class="w-6 h-6  lg:w-[54px] lg:h-[54px] border border-primary rounded-full flex justify-center items-center
         hover:bg-primary focus:bg-primary"
         >
           <svg class="w-[7px] h-[10px] lg:w-[9px] lg:h-[13px] fill-primary hover:fill-white focus:fill-white">
@@ -25,28 +25,28 @@
         </div>
       </div>
     </div>
-    <ul class="flex gap-[30px] overflow-hidden">
+    <ul class="flex gap-[30px] overflow-hidden w-[300px] md:w-auto mx-auto md:mx-0">
       <li
-        v-for="card in cardsData" :key="card.title" class="2xl:w-[386px] 2xl:h-[440px] p-3 shrink-0 bg-white
+        v-for="card in cardsData" :key="card.title" class="w-[300px] 2xl:w-[386px] 2xl:h-[440px] p-3 shrink-0 bg-white
       rounded-2xl"
       >
-        <img :src="card.img" :alt="card.title" class="2xl:mb-6">
-        <div class="2xl:p-3">
-          <h4 class="font-semibold 2xl:text-[24px] 2xl:leading-[1] 2xl:mb-[14px] truncate">
+        <img :src="card.img" :alt="card.title" class="mb-3 lg:mb-6">
+        <div class="p-1 lg:p-3">
+          <h4 class="font-semibold text-[18px] 2xl:text-[24px] 2xl:leading-[1] 2xl:mb-[14px] truncate">
             {{ card.title }}
           </h4>
-          <p class="2xl:text-[14px] 2xl:leading-[1] 2xl:mb-[15px] text-secondary truncate">
+          <p class="text-[10px] lg:text-[14px] 2xl:leading-[1] mb-3 2xl:mb-[15px] text-secondary truncate">
             {{ card.text }}
           </p>
-          <div class=" flex justify-between 2xl:py-3">
-            <p class="text-[16px] leading-[1.25] text-secondary">
-              <span class="font-semibold 2xl:text-[24px] leading-[1] text-primary">
+          <div class=" flex justify-between items-center 2xl:py-3">
+            <p class="text-[12px] lg:text-[16px] leading-[1.25] text-secondary">
+              <span class="font-semibold text-[16px] lg:text-[24px] leading-[1] text-primary">
                 {{ card.price }}
               </span>
               /Person
             </p>
             <CustomButton
-              class="text-[14px] leading-[1] border py-3 px-4 hover:bg-primary hover:text-white
+              class="text-[10px] lg:text-[14px] leading-[1] border py-3 px-4 hover:bg-primary hover:text-white
             focus:bg-primary focus:text-white"
             >
               Book Now

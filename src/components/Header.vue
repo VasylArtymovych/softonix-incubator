@@ -44,8 +44,8 @@
         </ul>
         <!--BookNow button-->
         <CustomButton
-          class="w-[170px] h-[54px] font-medium  text-accent border-accent hover:bg-accent hover:text-white
-          focus:bg-accent focus:text-white mt-3 md:mt-0 mx-auto md:mx-0"
+          class="w-[130px] h-[44px] lg:w-[170px] lg:h-[54px] lg:font-medium   text-accent border-accent
+          hover:bg-accent hover:text-white focus:bg-accent focus:text-white mt-3 md:mt-0 mx-auto md:mx-0"
         >
           Book Now
           <svg class="w-[16px] h-[16px] ml-[6px] fill-current hover:fill-white focus:fill-white">

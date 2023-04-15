@@ -1,5 +1,5 @@
 <template>
-  <MainContainer class="md:flex justify-between pb-[26px] 2xl:pb-[58px] pt-[26px] 2xl:pt-[106px]">
+  <MainContainer class="md:flex justify-between pb-4 2xl:pb-[58px] pt-[50px] 2xl:pt-[106px]">
     <!--Left wrapper-->
     <div class="relative mx-auto md:mx-[36px] 2xl:mx-0 w-[300px] lg:w-[450px] 2xl:w-[490px] 2xl:h-[562px] 2xl:mt-12">
       <img src="../assets/images/features-man-with-camera.png" alt="man-with-camera" class="block">
