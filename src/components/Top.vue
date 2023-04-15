@@ -1,7 +1,7 @@
 <template>
-  <Container class="mt-[50px] lg:mt-[90px] lg:mb-[37px]">
+  <MainContainer class="mt-[50px] lg:mt-[90px] mb-4 lg:mb-[37px]">
     <!--Top title and btns wrapper-->
-    <div class="w-[300px] md:w-[527px] mx-auto text-center lg:mb-[51px]">
+    <div class="w-[300px] md:w-[390px] mx-auto lg:mb-[51px]">
       <SectionTitle class="mb-2 lg:mb-4">
         Top Destinations
       </SectionTitle>
@@ -23,11 +23,11 @@
         <img :src="img" :alt="'picture' + i" class="">
       </li>
     </ul> -->
-  </Container>
+  </MainContainer>
 </template>
 
 <script lang="ts" setup>
-import Container from '@/components/Container.vue'
+import MainContainer from '@/components/Container.vue'
 import SectionTitle from '@/components/SectionTitle.vue'
 import CustomButton from '@/components/Button.vue'
 import img1 from '@/assets/images/top-img-1.png'

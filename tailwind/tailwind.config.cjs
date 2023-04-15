@@ -14,6 +14,7 @@ module.exports = {
       secondary: '#5B5F62',
       nav: '#2E476B',
       accent: '#F66F4D',
+      background: '#E5E5E5',
       white: '#ffffff',
       'white-light': '#FDFEFD',
       'white-smooth': 'whitesmoke',

@@ -1,5 +1,5 @@
 <template>
-  <Container class=" pt-[50px] 2xl:pt-[82px] pb-4 2xl:pb-[50px]">
+  <MainContainer class=" pt-[50px] 2xl:pt-[82px] pb-4 2xl:pb-[50px]">
     <!--Popular title and btns wrapper-->
     <div class="md:flex justify-between items-center w-[300px] md:w-full  mx-auto md:mx-0 mb-3 lg:mb-6 2xl:mb-[35px]">
       <SectionTitle class="md:w-[300px] lg:w-[400px]">
@@ -55,11 +55,11 @@
         </div>
       </li>
     </ul>
-  </Container>
+  </MainContainer>
 </template>
 
 <script setup lang="ts">
-import Container from '@/components/Container.vue'
+import MainContainer from '@/components/Container.vue'
 import SectionTitle from './SectionTitle.vue'
 import CustomButton from '@/components/Button.vue'
 import img1 from '@/assets/images/popular-img-1.png'
