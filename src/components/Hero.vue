@@ -12,7 +12,8 @@
         Discover the Best Lovely Places
       </h1>
       <p
-        class="text-xs lg:text-base 2xl:text-lg leading-[1.56]  2xl:max-w-[31.25rem] mb-[14px] lg:mb-[44px]"
+        class="text-xs lg:text-base 2xl:text-lg leading-[1.56]  2xl:max-w-[31.25rem] mb-[14px] lg:mb-[44px]
+        text-secondary"
       >
         Plan and book your perfect trip with expert advice, travel tips,
         destination information and inspiration from us.

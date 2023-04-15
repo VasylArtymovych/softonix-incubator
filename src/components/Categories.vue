@@ -4,10 +4,10 @@
     <div class="md:flex justify-between w-[300px] md:w-full  mx-auto md:mx-0 md:mb-[14px]">
       <!--Categories title wrapper-->
       <div class="lg:pb-[60px]">
-        <SectionTitle class="leading-[1] md:mb-[14px] lg:pb-6">
+        <SectionTitle class="leading-[1] md:mb-[14px] lg:mb-6">
           Categories
         </SectionTitle>
-        <p class="text-xs  lg:text-base leading-[1.62] w-[300px] lg:w-[370px]">
+        <p class="text-xs  lg:text-base leading-[1.62] w-[300px] lg:w-[370px] text-secondary">
           Here are lots of interesting destinations to visit, but don’t be confused—they’re
           already grouped by category.
         </p>

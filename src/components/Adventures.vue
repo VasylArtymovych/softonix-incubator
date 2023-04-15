@@ -1,64 +1,71 @@
 <template>
-  <MainContainer class="flex justify-between 2xl:pb-[58px] 2xl:pt-[106px]">
+  <MainContainer class="md:flex justify-between pb-[26px] 2xl:pb-[58px] pt-[26px] 2xl:pt-[106px]">
     <!--Left wrapper-->
-    <div class="relative 2xl:w-[490px] 2xl:h-[562px] 2xl:mt-12">
+    <div class="relative mx-auto md:mx-[36px] 2xl:mx-0 w-[300px] lg:w-[450px] 2xl:w-[490px] 2xl:h-[562px] 2xl:mt-12">
       <img src="../assets/images/features-man-with-camera.png" alt="man-with-camera" class="block">
       <!--Inner left wrapper-->
       <div
-        class="absolute 2xl:left-[-65px] 2xl:bottom-[85px] 2xl:w-[140px] 2xl:h-[218px]  2xl:px-[14px]  2xl:py-[20px]
-       bg-white rounded-xl"
+        class="absolute left-[-40px] bottom-[50px] 2xl:left-[-65px] 2xl:bottom-[85px] 2xl:w-[140px] 2xl:h-[218px]
+        px-2 2xl:px-[14px] py-3 2xl:py-[20px] bg-white rounded-xl"
       >
         <img
-          src="../assets/images/features-location-star.png" alt="location-point" class="block 2xl:w-[80px] 2xl:h-[80px]
-        mx-auto 2xl:mb-[30px] \"
+          src="../assets/images/features-location-star.png" alt="location-point" class="block w-[50px] h-[50px]
+          lg:w-[80px] lg:h-[80px] mx-auto mb-3 2xl:mb-[30px]"
         >
-        <p class="fon-nav font-semibold 2xl:text-[30px] text-center text-accent mb-2">
+        <p class="fon-nav font-semibold text-base lg:text-[30px] text-center text-accent lg:mb-2">
           600%
         </p>
-        <p class="2xl:text-[19px] text-center text-gray ">
+        <p class="text-xs lg:text-[19px] text-center text-gray ">
           Destinations
         </p>
       </div>
       <!--Inner bottom wrapper-->
       <div
-        class="absolute 2xl:right-[30px] 2xl:bottom-[-22px] 2xl:w-[171px] 2xl:h-[92px] 2xl:p-[20px]
+        class="absolute right-0 2xl:right-[16px] bottom-0 2xl:bottom-[-22px] 2xl:w-[171px] 2xl:h-[92px] p-2 lg:p-[20px]
        bg-white rounded-xl"
       >
         <div class="flex items-center mb-[2px] font-nav">
-          <svg class="w-[22px] h-[22px] fill-accent mr-3">
+          <svg class="w-3 lg:w-[22px] h-3 lg:h-[22px] fill-accent mr-2 lg:mr-3">
             <use href="../assets/images/symbol-defs.svg#icon-signal-svg" />
           </svg>
-          <p class=" font-semibold 2xl:text-[28px] leading-[1.07]">
+          <p class=" font-semibold text-base lg:text-[28px] leading-[1.07]">
             5000+
           </p>
         </div>
-        <p class="2xl:text-xs text-gray-medium text-center">
+        <p class="text-[8px] lg:text-xs text-gray-medium text-center">
           Customars
         </p>
       </div>
     </div>
     <!--Right wrapper-->
-    <div class="w-[538px] 2xl:mt-[110px]">
+    <div class="w-[300px] lg:w-[450px] 2xl:w-[538px] mt-4 md:mt-9 mx-auto md:mx-0 2xl:mt-[110px]">
       <!--Pre title-->
-      <h4 class="font-semibold text-[20px] leading-[1] tracking-widest text-accent 2xl:pb-5">
+      <h4 class="font-semibold text-[14px] lg:text-[20px] leading-[1] tracking-widest text-accent mb-2 2xl:mb-5">
         Our Experience
       </h4>
       <!--Section title-->
-      <SectionTitle class=" 2xl:pb-5">
+      <SectionTitle class="md:mb-[14px] 2xl:mb-5">
         Our Stories Have Adventures
       </SectionTitle>
-      <p class="text-base leading-[1.62] 2xl:mb-10 2xl:max-w-[460px] text-secondary">
+      <p class=" text-xs lg:text-base leading-[1.62] mb-3 md:mb-[14px] lg:mb-10 2xl:max-w-[460px] text-secondary">
         We are experienced in bringing adventures to stay their journey, with all outdoor destinations
         in the world as our specialties. Start your adventure now! Nature has already called you!
       </p>
       <!--Bottom section-->
       <div class="flex justify-between">
         <div
-          v-for="item in bottomText" :key="item.title" class="2xl:w-[166px] 2xl:h-[178px] 2xl:p-[26px] 2xl:pt-[30px]
-        rounded-[14px] bg-white"
+          v-for="item in bottomText" :key="item.title" class="w-[90px] lg:w-[130px] 2xl:w-[166px]
+          2xl:h-[178px] p-3 lg:p-[26px] pt-4 lg:pt-[30px] rounded-[14px] bg-white"
         >
-          <p class="font-semibold 2xl:text-[46px] leading-[1] text-accent 2xl:mb-[18px]">{{ item.title }}</p>
-          <p class="2xl:text-[21px] leading-[1.38] text-gray">{{ item.text }}</p>
+          <p
+            class="font-semibold text-[20px] lg:text-[36px] 2xl:text-[46px] leading-[1] text-accent mb-2 lg:mb-3
+          2xl:mb-[18px]"
+          >
+            {{ item.title }}
+          </p>
+          <p class="text-xs lg:text-base 2xl:text-[21px] leading-[1.38] text-gray">
+            {{ item.text }}
+          </p>
         </div>
       </div>
     </div>
