@@ -36,9 +36,17 @@
       </div>
     </div>
     <!--Carousel-->
-    <div>
-      <ul class="flex justify-between gap-[15px] overflow-hidden w-[300px] md:w-auto mx-auto md:mx-0">
-        <li v-for="item in listData" :key="item.text" class="w-[90px] md:w-[120px] lg:w-[170px] lg:h-[274px] shrink-0">
+    <div class="w-[300px] md:w-[100%] mx-auto md:mx-0 overflow-hidden">
+      <ul
+
+        class=" w-[9000px]"
+        :style="{'margin-left': position + 'px'}"
+      >
+        <li
+          v-for="item in listData"
+          :key="item.text" class="inline-block mr-[15px] w-[90px] md:w-[162px] lg:w-[170px]
+        lg:h-[274px]"
+        >
           <div class="pb-2 2xl:pb-[18px]">
             <img :src="item.img" :alt="item.text">
           </div>
@@ -58,6 +66,7 @@ import Pic3 from '../assets/images/categories-pic-3.png'
 import Pic4 from '../assets/images/categories-pic-4.png'
 import Pic5 from '../assets/images/categories-pic-5.png'
 import Pic6 from '../assets/images/categories-pic-6.png'
+import { useWindowWidth } from '@/hooks/windowWidth'
 
 const listData = [
   { img: Pic1, text: 'Beach' },
@@ -65,17 +74,45 @@ const listData = [
   { img: Pic3, text: 'Mountain' },
   { img: Pic4, text: 'Temple' },
   { img: Pic5, text: 'Tower' },
-  { img: Pic6, text: 'Pyramid' }
+  { img: Pic6, text: 'Pyramid' },
+  { img: Pic6, text: 'Pyramid' },
+  { img: Pic6, text: 'Pyramid' },
+  { img: Pic6, text: 'Pyramid' },
+  { img: Pic4, text: 'Temple' }
 ]
 
-const currentPosition = ref(0)
+const { type } = useWindowWidth()
+
+const width = computed(() => {
+  if (type.value === 'sm') {
+    return 90
+  } else if (type.value === 'md') {
+    return 162
+  } else {
+    return 170
+  }
+})
+
+const quantity = computed(() => {
+  if (type.value === 'sm') {
+    return 3
+  } else if (type.value === 'md') {
+    return 4
+  } else {
+    return 5
+  }
+})
+const padding = 15
+const position = ref(0)
+
 const onLeftBtn = () => {
-  currentPosition.value -= 1
-  console.log('click left')
+  position.value += (width.value + padding) * quantity.value
+  position.value = Math.min(position.value, 0)
 }
+
 const onRightBtn = () => {
-  currentPosition.value += 1
-  console.log('click right')
+  position.value -= (width.value + padding) * quantity.value
+  position.value = Math.max(position.value, -(width.value + padding) * (listData.length - quantity.value))
 }
 </script>
 

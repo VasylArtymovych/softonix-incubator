@@ -29,6 +29,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SectionTitle: typeof import('./../src/components/SectionTitle.vue')['default']
+    Temp: typeof import('./../src/components/Temp.vue')['default']
     Top: typeof import('./../src/components/Top.vue')['default']
   }
   export interface ComponentCustomProperties {
