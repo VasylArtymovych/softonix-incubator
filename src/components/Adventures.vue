@@ -1,7 +1,7 @@
 <template>
-  <MainContainer class="md:flex justify-between pb-4 2xl:pb-[58px] pt-[50px] 2xl:pt-[106px]">
+  <MainContainer class="md:flex justify-between pb-4 pt-[50px] lg:py-[50px] lg:mt-[58px]">
     <!--Left wrapper-->
-    <div class="relative mx-auto md:mx-[36px] 2xl:mx-0 w-[300px] lg:w-[450px] 2xl:w-[490px] 2xl:h-[562px] 2xl:mt-12">
+    <div class="relative w-[300px] lg:w-[450px] 2xl:w-[490px] 2xl:h-[562px] mx-auto md:mx-[36px] lg:mx-0 mb-5">
       <img src="../assets/images/features-man-with-camera.png" alt="man-with-camera" class="block">
       <!--Inner left wrapper-->
       <div
@@ -21,7 +21,7 @@
       </div>
       <!--Inner bottom wrapper-->
       <div
-        class="absolute right-0 2xl:right-[16px] bottom-0 2xl:bottom-[-22px] 2xl:w-[171px] 2xl:h-[92px] p-2 lg:p-[20px]
+        class="absolute right-0 2xl:right-[16px] bottom-0 lg:bottom-[-20px] 2xl:w-[171px] 2xl:h-[92px] p-2 lg:p-[20px]
        bg-white rounded-xl"
       >
         <div class="flex items-center mb-[2px] font-nav">
@@ -38,7 +38,7 @@
       </div>
     </div>
     <!--Right wrapper-->
-    <div class="w-[300px] lg:w-[450px] 2xl:w-[538px] mt-4 md:mt-9 mx-auto md:mx-0 2xl:mt-[110px]">
+    <div class="w-[300px] lg:w-[450px] 2xl:w-[538px] md:mt-9 lg:mt-[60px] mx-auto md:mx-0 ">
       <!--Pre title-->
       <h4 class="font-semibold text-[14px] lg:text-[20px] leading-[1] tracking-widest text-accent mb-2 2xl:mb-5">
         Our Experience

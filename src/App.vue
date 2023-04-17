@@ -6,6 +6,8 @@
   <Popular />
   <Top />
   <Testimonial />
+  <NewsLetter />
+  <Footer />
 </template>
 
 <script lang="ts" setup>
@@ -16,6 +18,8 @@ import Adventures from '@/components/Adventures.vue'
 import Popular from './components/Popular.vue'
 import Top from './components/Top.vue'
 import Testimonial from './components/Testimonial.vue'
+import NewsLetter from './components/NewsLetter.vue'
+import Footer from './components/Footer.vue'
 // import Temp from './components/Temp.vue'
 
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <MainContainer class="mt-[50px] lg:mt-[90px] mb-4 lg:mb-[37px]">
+  <MainContainer class="pt-[50px] pb-4 lg:py-[37px] lg:mt-[53px]">
     <!--Top title and btns wrapper-->
     <div class="w-[300px] md:w-[390px] mx-auto lg:mb-[51px]">
       <SectionTitle class="mb-2 lg:mb-4">

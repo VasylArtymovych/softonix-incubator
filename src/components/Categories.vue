@@ -1,5 +1,5 @@
 <template>
-  <MainContainer class="pt-[50px] lg:pt-[100px] pb-4 lg:pb-8 ">
+  <MainContainer class="pt-[50px] lg:pt-[18px] pb-4 lg:pb-8 lg:mt-[79px]">
     <!--Categories top wrapper-->
     <div class="md:flex justify-between w-[300px] md:w-full  mx-auto md:mx-0 md:mb-[14px]">
       <!--Categories title wrapper-->
@@ -13,24 +13,15 @@
         </p>
       </div>
       <!--Categories btns wrapper-->
-      <div class="flex gap-4 mb-3 md:mb-0">
+      <div class="flex justify-end gap-2 lg:gap-4 mb-3 md:mb-0">
         <div
-          class="ml-auto w-6 h-6 lg:w-[54px] lg:h-[54px] border border-primary rounded-full
-          flex justify-center items-center
-        hover:bg-primary focus:bg-primary"
-          @click="onLeftBtn"
+          v-for="btn in btns" :key="btn.arrow"
+          class=" w-6 h-6 lg:w-[54px] lg:h-[54px] border border-primary rounded-full
+              flex justify-center items-center hover:bg-primary focus:bg-primary"
+          @click="btn.handler"
         >
           <svg class="w-[7px] h-[10px] lg:w-[9px] lg:h-[13px] fill-primary hover:fill-white focus:fill-white">
-            <use href="../assets/images/symbol-defs.svg#icon-arrow-left-svg" />
-          </svg>
-        </div>
-        <div
-          class="w-6 h-6 lg:w-[54px] lg:h-[54px] border border-primary rounded-full flex justify-center items-center
-        hover:bg-primary focus:bg-primary"
-          @click="onRightBtn"
-        >
-          <svg class="w-[7px] h-[10px] lg:w-[9px] lg:h-[13px] fill-primary hover:fill-white focus:fill-white">
-            <use href="../assets/images/symbol-defs.svg#icon-arrow-right-svg" />
+            <use :href="getSvgUrl(btn.arrow)" />
           </svg>
         </div>
       </div>
@@ -58,6 +49,7 @@ import Pic3 from '../assets/images/categories-pic-3.png'
 import Pic4 from '../assets/images/categories-pic-4.png'
 import Pic5 from '../assets/images/categories-pic-5.png'
 import Pic6 from '../assets/images/categories-pic-6.png'
+import svgSprite from '@/assets/images/symbol-defs.svg'
 
 const listData = [
   { img: Pic1, text: 'Beach' },
@@ -77,6 +69,15 @@ const onRightBtn = () => {
   currentPosition.value += 1
   console.log('click right')
 }
+const btns = [
+  { arrow: 'left', handler: onLeftBtn },
+  { arrow: 'right', handler: onRightBtn }
+]
+
+const getSvgUrl = (name: string) => {
+  return (`${svgSprite}#icon-arrow-${name}-svg`)
+}
+
 </script>
 
 <style lang="scss"></style>

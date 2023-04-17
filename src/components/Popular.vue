@@ -1,31 +1,25 @@
 <template>
-  <MainContainer class=" pt-[50px] 2xl:pt-[82px] pb-4 2xl:pb-[50px]">
+  <MainContainer class=" pt-[50px] pb-4 lg:py-[50px] lg:mt-8">
     <!--Popular title and btns wrapper-->
     <div class="md:flex justify-between items-center w-[300px] md:w-full  mx-auto md:mx-0 mb-3 lg:mb-6 2xl:mb-[35px]">
       <SectionTitle class="md:w-[300px] lg:w-[400px]">
         Find Popular Destination
       </SectionTitle>
       <!--Popular btns wrapper-->
-      <div class="flex gap-4">
+      <div class="flex justify-end gap-2 lg:gap-4">
         <div
-          class="ml-auto w-6 h-6 lg:w-[54px] lg:h-[54px] border border-primary rounded-full flex justify-center
-          items-center hover:bg-primary focus:bg-primary"
+          v-for="btn in btns" :key="btn.arrow"
+          class=" w-6 h-6 lg:w-[54px] lg:h-[54px] border border-primary rounded-full
+                flex justify-center items-center hover:bg-primary focus:bg-primary"
+          @click="btn.handler"
         >
           <svg class="w-[7px] h-[10px] lg:w-[9px] lg:h-[13px] fill-primary hover:fill-white focus:fill-white">
-            <use href="../assets/images/symbol-defs.svg#icon-arrow-left-svg" />
-          </svg>
-        </div>
-        <div
-          class="w-6 h-6  lg:w-[54px] lg:h-[54px] border border-primary rounded-full flex justify-center items-center
-        hover:bg-primary focus:bg-primary"
-        >
-          <svg class="w-[7px] h-[10px] lg:w-[9px] lg:h-[13px] fill-primary hover:fill-white focus:fill-white">
-            <use href="../assets/images/symbol-defs.svg#icon-arrow-right-svg" />
+            <use :href="getSvgUrl(btn.arrow)" />
           </svg>
         </div>
       </div>
     </div>
-    <ul class="flex gap-[30px] overflow-hidden w-[300px] md:w-auto mx-auto md:mx-0">
+    <ul class="flex gap-[26px] 2xl:gap-[30px] overflow-hidden w-[300px] md:w-auto mx-auto md:mx-0">
       <li
         v-for="card in cardsData" :key="card.title" class="w-[300px] 2xl:w-[386px] 2xl:h-[440px] p-3 shrink-0 bg-white
       rounded-2xl"
@@ -65,6 +59,22 @@ import CustomButton from '@/components/Button.vue'
 import img1 from '@/assets/images/popular-img-1.png'
 import img2 from '@/assets/images/popular-img-2.png'
 import img3 from '@/assets/images/popular-img-3.png'
+import svgSprite from '@/assets/images/symbol-defs.svg'
+
+const onLeftBtn = () => {
+  console.log('click left')
+}
+const onRightBtn = () => {
+  console.log('click right')
+}
+const btns = [
+  { arrow: 'left', handler: onLeftBtn },
+  { arrow: 'right', handler: onRightBtn }
+]
+
+const getSvgUrl = (name: string) => {
+  return (`${svgSprite}#icon-arrow-${name}-svg`)
+}
 
 const cardsData = [
   {

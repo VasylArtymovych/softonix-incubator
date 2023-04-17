@@ -5,12 +5,7 @@
       class=" py-6 text-primary font-nav md:flex justify-between items-center relative"
     >
       <!--Logo-->
-      <div class="flex items-center pr-9 lg:pr-[72px]">
-        <svg class="w-[42px] h-[35px] fill-inherit mr-[6px]">
-          <use href="../assets/images/symbol-defs.svg#icon-logo-svg" />
-        </svg>
-        <span class=" font-logo text-xl ">Salty</span>
-      </div>
+      <Logo />
       <!--Burger menu button-->
       <button class=" absolute md:hidden top-[24px] right-[24px]" @click="()=> isMenuOpen = !isMenuOpen">
         <svg v-show="!isMenuOpen" class="w-[42px] h-[35px] fill-iherit">
@@ -58,8 +53,9 @@
 </template>
 
 <script lang="ts" setup>
-import CustomButton from '@/components/Button.vue'
 import MainContainer from '@/components/Container.vue'
+import Logo from './Logo.vue'
+import CustomButton from '@/components/Button.vue'
 
 const pageNames = ['Home', 'About us', 'Destination', 'Tours', 'Blog']
 const activePage = ref('Home')

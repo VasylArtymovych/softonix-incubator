@@ -19,7 +19,7 @@ module.exports = {
       'white-light': '#FDFEFD',
       'white-smooth': 'whitesmoke',
       gray: '#939597',
-      'gray-medium': '#5B5F62',
+      footerText: '#676A6C',
 
       'gray-light': '#f3f4f6',
       'gray-ultra-light': '#e5e7eb',

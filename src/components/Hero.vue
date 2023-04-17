@@ -1,9 +1,9 @@
 <template>
   <MainContainer
-    class="md:flex pb-4 lg:pb-[50px] justify-between "
+    class="md:flex pt-[100px] lg:pt-[102px]  pb-4 lg:pb-[50px] justify-between "
   >
     <!--Left wrapper-->
-    <div class=" w-[300px] lg:w-[450px] 2xl:w-[577px] mx-auto md:mx-0  mt-[100px] md:mt-[176px]">
+    <div class=" w-[300px] lg:w-[450px] 2xl:w-[577px] mx-auto md:mx-0 md:mt-[56px] lg:mt-[76px]">
       <!--Main title-->
       <h1
         class="font-logo font-bold text-4xl md:text-[42px] lg:text-[74px] 2xl:text-[5.25rem] leading-[1.02]
@@ -61,7 +61,7 @@
       </div>
     </div>
     <!--Right wrapper-->
-    <div class="relative mx-auto md:mx-0 mt-[10px] md:mt-[112px] w-[300px] lg:w-[29.37rem]">
+    <div class="relative mx-auto md:mx-0 mt-[10px] w-[300px] lg:w-[29.37rem]">
       <img src="../assets/images/man.png" alt="man-with-phone">
       <img
         src="../assets/images/orion_navigation-map.png" alt="navigation-map" class="absolute top-0 left-0
