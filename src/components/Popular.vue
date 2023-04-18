@@ -5,7 +5,7 @@
       <SectionTitle class="md:w-[300px] lg:w-[400px]">
         Find Popular Destination
       </SectionTitle>
-      <!--Popular btns wrapper-->
+      <!--Inner btns wrapper-->
       <div class="flex justify-end gap-2 lg:gap-4">
         <div
           v-for="btn in btns" :key="btn.arrow"
@@ -22,12 +22,17 @@
         </div>
       </div>
     </div>
-    <ul class="flex gap-[26px] 2xl:gap-[30px] overflow-hidden w-[300px] md:w-auto mx-auto md:mx-0">
+    <!--Card list-->
+    <ul
+      ref="container"
+      class="card-list flex gap-[26px] 2xl:gap-[30px] w-[300px] md:w-auto mx-auto md:mx-0 overflow-x-auto scroll-smooth
+      snap-x snap-mandatory"
+    >
       <li
-        v-for="card in cardsData" :key="card.title" class="w-[300px] 2xl:w-[386px] 2xl:h-[440px] p-3 shrink-0 bg-white
+        v-for="card in cardsData" :key="card.title" class="w-[300px] 2xl:w-[386px] p-3 shrink-0 snap-start bg-white
       rounded-2xl"
       >
-        <img :src="card.img" :alt="card.title" class="mb-3 lg:mb-6">
+        <img :src="card.img" :alt="card.title" class="block mb-3 lg:mb-6 lg:h-[252px]">
         <div class="p-1 lg:p-3">
           <h4 class="font-semibold text-[18px] 2xl:text-[24px] 2xl:leading-[1] 2xl:mb-[14px] truncate">
             {{ card.title }}
@@ -63,16 +68,15 @@ import img1 from '@/assets/images/popular-img-1.png'
 import img2 from '@/assets/images/popular-img-2.png'
 import img3 from '@/assets/images/popular-img-3.png'
 import svgSprite from '@/assets/images/symbol-defs.svg'
+import { useScrollCarouselState } from '@/hooks/scrollCarouselState'
+import { useWindowWidth } from '@/hooks/windowWidth'
 
-const onLeftBtn = () => {
-  console.log('click left')
-}
-const onRightBtn = () => {
-  console.log('click right')
-}
+const { type } = useWindowWidth()
+const { container, previous, next } = useScrollCarouselState(type)
+
 const btns = [
-  { arrow: 'left', handler: onLeftBtn },
-  { arrow: 'right', handler: onRightBtn }
+  { arrow: 'left', handler: previous },
+  { arrow: 'right', handler: next }
 ]
 
 const getSvgUrl = (name: string) => {
@@ -120,5 +124,9 @@ const cardsData = [
 </script>
 
 <style lang="scss" scoped>
-
+  .card-list {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 </style>

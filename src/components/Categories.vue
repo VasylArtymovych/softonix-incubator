@@ -32,7 +32,7 @@
     <!--Carousel-->
     <div class="w-[300px] md:w-[100%] mx-auto md:mx-0 overflow-hidden">
       <ul
-        class="w-[3000px]"
+        class=" w-[3000px] transition-[margin-left] duration-300 ease-linear"
         :style="{'margin-left': position + 'px'}"
       >
         <li
@@ -132,4 +132,5 @@ const getSvgUrl = (name: string) => {
 
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+</style>

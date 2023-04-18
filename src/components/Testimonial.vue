@@ -17,14 +17,14 @@
       <!--Section card container-->
       <div
         ref="container"
-        class="card-container w-full flex overflow-x-auto snap-x snap-mandatory"
+        class="card-container w-full flex gap-1 overflow-x-auto scroll-smooth snap-x snap-mandatory"
       >
         <!--Section feedbacks card-->
         <div
           v-for="data in cardMetaData" :key="data.author"
           class="w-full p-3 lg:p-[30px] bg-white rounded-[14px] shrink-0 snap-start"
         >
-          <p class=" text-[10px] md:text-[12px] lg:text-[18px] leading-[1.67] mb-3 lg:mb-[26px]">
+          <p class="text-[10px] md:text-[12px] lg:text-[18px] leading-[1.67] mb-3 lg:mb-[26px]">
             {{ data.text }}
           </p>
           <div class="flex justify-between items-end">
@@ -35,7 +35,7 @@
                 </svg>
               </div>
               <h4 class="font-medium text-[14px] lg:text-[20px] leading-[1] pb-2">
-                {{data.author}}
+                {{ data.author }}
               </h4>
               <h6 class="text-[8px] md:text-[10px] lg:text-[12px] leading-[1] text-secondary">
                 {{ data.position }}
