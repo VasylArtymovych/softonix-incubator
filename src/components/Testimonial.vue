@@ -14,37 +14,44 @@
       >
         A customer said about us:
       </SectionTitle>
-      <!--Section feedbacks card-->
-      <div class="p-3 lg:p-[30px] bg-white rounded-[14px]">
-        <p class="text-[10px] md:text-[12px] lg:text-[18px] leading-[1.67] mb-3 lg:mb-[26px]">
-          Salty helped me a lot in finding the best place for our first outdoor adventure trip.
-          They responded very quickly and gave me a detailed account of the place—its history,
-          as well as its best features.
-        </p>
-        <div class="flex justify-between items-end">
-          <div>
-            <div class="flex gap-1 mb-2 lg:mb-[17px]">
-              <svg v-for="el in 5" :key="el" class="w-[10px] h-[10px] lg:w-[18px] lg:h-[18px]">
-                <use href="../assets/images/symbol-defs.svg#icon-star-svg" />
-              </svg>
+      <!--Section card container-->
+      <div
+        ref="container"
+        class="card-container w-full flex overflow-x-auto snap-x snap-mandatory"
+      >
+        <!--Section feedbacks card-->
+        <div
+          v-for="data in cardMetaData" :key="data.author"
+          class="w-full p-3 lg:p-[30px] bg-white rounded-[14px] shrink-0 snap-start"
+        >
+          <p class=" text-[10px] md:text-[12px] lg:text-[18px] leading-[1.67] mb-3 lg:mb-[26px]">
+            {{ data.text }}
+          </p>
+          <div class="flex justify-between items-end">
+            <div>
+              <div class="flex gap-1 mb-2 lg:mb-[17px]">
+                <svg v-for="el in 5" :key="el" class="w-[10px] h-[10px] lg:w-[18px] lg:h-[18px]">
+                  <use href="../assets/images/symbol-defs.svg#icon-star-svg" />
+                </svg>
+              </div>
+              <h4 class="font-medium text-[14px] lg:text-[20px] leading-[1] pb-2">
+                {{data.author}}
+              </h4>
+              <h6 class="text-[8px] md:text-[10px] lg:text-[12px] leading-[1] text-secondary">
+                {{ data.position }}
+              </h6>
             </div>
-            <h4 class="font-medium text-[14px] lg:text-[20px] leading-[1] pb-2">
-              Andrew Sarma
-            </h4>
-            <h6 class="text-[8px] md:text-[10px] lg:text-[12px] leading-[1] text-secondary">
-              Enterpreneur
-            </h6>
-          </div>
-          <div class="flex gap-2 lg:gap-4 mb-3 md:mb-0">
-            <div
-              v-for="btn in btns" :key="btn.arrow"
-              class="group w-6 h-6 lg:w-[40px] lg:h-[40px] border border-primary rounded-full
-              flex justify-center items-center hover:bg-primary focus:bg-primary cursor-pointer"
-              @click="btn.handler"
-            >
-              <svg class="w-[4.5px] h-[9px] fill-primary group-hover:fill-white group-focus:fill-white">
-                <use :href="getSvgUrl(btn.arrow)" />
-              </svg>
+            <div class="flex gap-2 lg:gap-4 mb-3 md:mb-0">
+              <div
+                v-for="btn in btns" :key="btn.arrow"
+                class="group w-6 h-6 lg:w-[40px] lg:h-[40px] border border-primary rounded-full
+                flex justify-center items-center hover:bg-primary focus:bg-primary cursor-pointer"
+                @click="btn.handler"
+              >
+                <svg class="w-[4.5px] h-[9px] fill-primary group-hover:fill-white group-focus:fill-white">
+                  <use :href="getSvgUrl(btn.arrow)" />
+                </svg>
+              </div>
             </div>
           </div>
         </div>
@@ -57,16 +64,33 @@
 import MainContainer from '@/components/Container.vue'
 import SectionTitle from './SectionTitle.vue'
 import svgSprite from '@/assets/images/symbol-defs.svg'
+import { useScrollCarouselState } from '@/hooks/scrollCarouselState'
+import { useWindowWidth } from '@/hooks/windowWidth'
 
-const onLeftBtn = () => {
-  console.log('click left')
-}
-const onRightBtn = () => {
-  console.log('click right')
-}
+const { type } = useWindowWidth()
+const { container, previous, next } = useScrollCarouselState(type)
+
 const btns = [
-  { arrow: 'left', handler: onLeftBtn },
-  { arrow: 'right', handler: onRightBtn }
+  { arrow: 'left', handler: previous },
+  { arrow: 'right', handler: next }
+]
+
+const cardMetaData = [
+  {
+    text: 'Salty helped me a lot in finding the best place for our first outdoor adventure trip. They responded very quickly and gave me a detailed account of the place—its history, as well as its best features.',
+    author: 'Andrew Sarma',
+    position: 'Enterpreneur'
+  },
+  {
+    text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad quasi aut atque earum ullam dolores quas itaque delectus excepturi? Natus dolorum laudantium inventore amet voluptatum aut voluptas ducimus.',
+    author: 'Brad Bishap',
+    position: 'Developer'
+  },
+  {
+    text: 'Repellat, nulla expedita, accusamus tenetur, fugit debitis! Accusantium facilis deleniti molestiae perferendis ratione incidunt quia vero repellat dolores amet cum minima corporis pariatur nam laborum blanditiis.',
+    author: 'Don Baker',
+    position: 'Lawyer'
+  }
 ]
 
 const getSvgUrl = (name: string) => {
@@ -75,5 +99,9 @@ const getSvgUrl = (name: string) => {
 </script>
 
 <style lang="scss" scoped>
-
+  .card-container {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 </style>

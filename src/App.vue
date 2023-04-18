@@ -8,6 +8,7 @@
   <Testimonial />
   <NewsLetter />
   <Footer />
+  <!-- <Temp /> -->
 </template>
 
 <script lang="ts" setup>

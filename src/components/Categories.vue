@@ -30,9 +30,16 @@
       </div>
     </div>
     <!--Carousel-->
-    <div>
-      <ul class="flex justify-between gap-[15px] overflow-hidden w-[300px] md:w-auto mx-auto md:mx-0">
-        <li v-for="item in listData" :key="item.text" class="w-[90px] md:w-[120px] lg:w-[170px] lg:h-[274px] shrink-0">
+    <div class="w-[300px] md:w-[100%] mx-auto md:mx-0 overflow-hidden">
+      <ul
+        class="w-[3000px]"
+        :style="{'margin-left': position + 'px'}"
+      >
+        <li
+          v-for="item, i in listData" :key="item.text + i"
+          class="inline-block w-[90px] md:w-[162px] lg:w-[170px] lg:h-[274px]"
+          :style="{'margin-right': margin + 'px'}"
+        >
           <div class="pb-2 2xl:pb-[18px]">
             <img :src="item.img" :alt="item.text">
           </div>
@@ -53,6 +60,7 @@ import Pic4 from '../assets/images/categories-pic-4.png'
 import Pic5 from '../assets/images/categories-pic-5.png'
 import Pic6 from '../assets/images/categories-pic-6.png'
 import svgSprite from '@/assets/images/symbol-defs.svg'
+import { useWindowWidth } from '@/hooks/windowWidth'
 
 const listData = [
   { img: Pic1, text: 'Beach' },
@@ -60,18 +68,59 @@ const listData = [
   { img: Pic3, text: 'Mountain' },
   { img: Pic4, text: 'Temple' },
   { img: Pic5, text: 'Tower' },
-  { img: Pic6, text: 'Pyramid' }
+  { img: Pic6, text: 'Pyramid' },
+  { img: Pic1, text: 'Beach' },
+  { img: Pic2, text: 'Desert' },
+  { img: Pic3, text: 'Mountain' },
+  { img: Pic4, text: 'Temple' }
 ]
+const { type } = useWindowWidth()
 
-const currentPosition = ref(0)
+const width = computed(() => {
+  if (type.value === 'sm') {
+    return 90
+  } else if (type.value === 'md') {
+    return 162
+  } else {
+    return 170
+  }
+})
+
+const quantity = computed(() => {
+  if (type.value === 'sm') {
+    return 3
+  } else if (type.value === 'md') {
+    return 4
+  } else {
+    return 5
+  }
+})
+
+const margin = computed(() => {
+  if (type.value === 'sm') {
+    return 15
+  } else if (type.value === 'md') {
+    return 20
+  } else {
+    return 30
+  }
+})
+const position = ref(0)
+
 const onLeftBtn = () => {
-  currentPosition.value -= 1
-  console.log('click left')
+  position.value += (width.value + margin.value) * quantity.value
+  position.value = Math.min(position.value, 0)
 }
+
 const onRightBtn = () => {
-  currentPosition.value += 1
-  console.log('click right')
+  position.value -= (width.value + margin.value) * quantity.value
+  position.value = Math.max(position.value, -(width.value + margin.value) * (listData.length - quantity.value))
 }
+
+watch(type, () => {
+  position.value = 0
+})
+
 const btns = [
   { arrow: 'left', handler: onLeftBtn },
   { arrow: 'right', handler: onRightBtn }

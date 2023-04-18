@@ -27,10 +27,12 @@ export const useWindowWidth = () => {
       windowWidthWithoutScrollBar.value < 1024
     ) {
       return 'md'
-    } else if (windowWidthWithoutScrollBar.value >= 1024) {
+    } else if (windowWidthWithoutScrollBar.value >= 1024 &&
+      windowWidthWithoutScrollBar.value < 1440) {
       return 'lg'
+    } else {
+      return '2xl'
     }
-    return null
   })
 
   return { width, type }
