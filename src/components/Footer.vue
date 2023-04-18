@@ -13,10 +13,10 @@
         <ul class="flex justify-end md:justify-start gap-2 lg:gap-[14px]">
           <li
             v-for="btn in socialBtns" :key="btn.name"
-            class="w-5 h-5 lg:w-8 lg:h-8 border flex justify-center items-center border-secondary hover:border-accent
-            rounded-full"
+            class="group w-5 h-5 lg:w-8 lg:h-8 border flex justify-center items-center border-secondary
+            hover:border-accent rounded-full cursor-pointer"
           >
-            <svg class="w-[12px] h-[12px] fill-secondary hover:fill-accent focus:fill-accent">
+            <svg class="w-[12px] h-[12px] fill-secondary group-hover:fill-accent group-focus:fill-accent">
               <use :href="getSvgUrl(btn.name)" />
             </svg>
           </li>

@@ -9,11 +9,14 @@
       <div class="flex justify-end gap-2 lg:gap-4">
         <div
           v-for="btn in btns" :key="btn.arrow"
-          class=" w-6 h-6 lg:w-[54px] lg:h-[54px] border border-primary rounded-full
-                flex justify-center items-center hover:bg-primary focus:bg-primary"
+          class="group w-6 h-6 lg:w-[54px] lg:h-[54px] border border-primary rounded-full
+          flex justify-center items-center hover:bg-primary focus:bg-primary cursor-pointer"
           @click="btn.handler"
         >
-          <svg class="w-[7px] h-[10px] lg:w-[9px] lg:h-[13px] fill-primary hover:fill-white focus:fill-white">
+          <svg
+            class="w-[7px] h-[10px] lg:w-[9px] lg:h-[13px] fill-primary group-hover:fill-white
+          group-focus:fill-white"
+          >
             <use :href="getSvgUrl(btn.arrow)" />
           </svg>
         </div>

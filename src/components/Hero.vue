@@ -24,6 +24,7 @@
         lg:py-[15px] lg:pl-[28px] lg:pr-[20px] bg-white-light rounded-full
         shadow-[0_28px_56px_-6px_rgba(246, 111, 77, 0.05)]"
       >
+        <!--Location and Date areas-->
         <div class="flex items-center gap-2 lg:gap-6 2xl:gap-[34px]">
           <div class="w-[96px] lg:w-[137px]">
             <p class=" font-medium text-xs lg:text-base 2xl:text-lg leading-[0.94]">Where</p>
@@ -31,7 +32,7 @@
               <p class="pr-[4px] lg:pr-3 2xl:pr-[26px] text-[10px] lg:text-xs 2xl:text-xs text-[#9498A4] truncate">
                 Center Point, London
               </p>
-              <svg class="w-[7px] h-[10px] lg:w-[9px] lg:h-[13px] fill-accent">
+              <svg class="w-[7px] h-[10px] lg:w-[9px] lg:h-[13px] fill-accent cursor-pointer">
                 <use href="../assets/images/symbol-defs.svg#icon-location-svg" />
               </svg>
             </div>
@@ -45,7 +46,7 @@
               <p class="pr-[4px] lg:pr-3 2xl:pr-[26px] text-[10px] lg:text-xs 2xl:text-xs text-[#9498A4] truncate">
                 09th March,2021
               </p>
-              <svg class="w-[10px] h-[10px] lg:w-[13px] lg:h-[13px] fill-accent">
+              <svg class="w-[10px] h-[10px] lg:w-[13px] lg:h-[13px] fill-accent cursor-pointer">
                 <use href="../assets/images/symbol-defs.svg#icon-date-svg" />
               </svg>
             </div>
@@ -54,7 +55,7 @@
         <!--Search icon-->
         <div
           class="flex justify-center items-center w-[40px] h-[40px] lg:w-[46px] lg:h-[46px]
-        2xl:w-[54px] 2xl:h-[54px]"
+          2xl:w-[54px] 2xl:h-[54px] cursor-pointer"
         >
           <img src="../assets/images/search-icon.png" alt="serach-button">
         </div>

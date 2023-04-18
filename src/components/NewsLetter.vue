@@ -17,14 +17,14 @@
       </p>
       <div class="relative w-[300px] lg:w-[450px] mx-auto">
         <input
-          type="text"
+          type="email"
           placeholder="Enter Your email address"
-          class="w-full h-[40px] lg:h-[60px] pl-3 lg:pl-[26px] text-xs bg-white rounded-[12px]
+          class="w-full h-[40px] lg:h-[60px] pl-3 lg:pl-[26px] text-xs lg:text-[16px] bg-white rounded-[12px]
           placeholder:text-[12px] lg:placeholder:text-[14px] placeholder:text-secondary"
         >
         <div
           class="absolute top-[5px] right-[5px] lg:top-[10px] lg:right-3 flex justify-center items-center w-[30px]
-          h-[30px] lg:w-[40px] lg:h-[40px] lg:p-3 bg-accent rounded-xl"
+          h-[30px] lg:w-[40px] lg:h-[40px] lg:p-3 bg-accent rounded-xl cursor-pointer"
         >
           <svg class="w-[6px] h-[6px] lg:w-[16px] lg:h-[17px] fill-white">
             <use href="../assets/images/symbol-defs.svg#icon-send-svg" />
