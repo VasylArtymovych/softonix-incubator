@@ -9,8 +9,8 @@
         px-2 2xl:px-[14px] py-3 2xl:py-[20px] bg-white rounded-xl"
       >
         <img
-          src="../assets/images/features-location-star.png" alt="location-point" class="block w-[50px] h-[50px]
-          lg:w-[80px] lg:h-[80px] mx-auto mb-3 2xl:mb-[30px]"
+          src="../assets/images/features-location-star.png" alt="location-point"
+          class="block w-[50px] h-[50px] lg:w-[80px] lg:h-[80px] mx-auto mb-3 2xl:mb-[30px]"
         >
         <p class="fon-nav font-semibold text-base lg:text-[30px] text-center text-accent lg:mb-2">
           600%
@@ -59,7 +59,7 @@
         >
           <p
             class="font-semibold text-[20px] lg:text-[36px] 2xl:text-[46px] leading-[1] text-accent mb-2 lg:mb-3
-          2xl:mb-[18px]"
+            2xl:mb-[18px]"
           >
             {{ item.title }}
           </p>

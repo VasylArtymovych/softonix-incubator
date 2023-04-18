@@ -5,10 +5,10 @@
       <img src="../assets/images/testimonia-man-img.png" alt="man-with-camera" class="block">
     </div>
     <!--Right wrapper-->
-    <div class="w-[300px] md:w-[350px]  lg:w-[450px] 2xl:w-[538px] mx-auto md:mx-0">
+    <div class="w-[300px] md:w-[350px] lg:w-[450px] 2xl:w-[538px] mx-auto md:mx-0">
       <!--Section title-->
       <SectionTitle
-        class="md:pr-3 mb-2 md:mb-[14px] 2xl:mb-[26px] before:block  before:w-[36px] before:h-1 lg:before:w-[67px]
+        class="md:pr-3 mb-2 md:mb-[14px] 2xl:mb-[26px] before:block before:w-[36px] before:h-1 lg:before:w-[67px]
         lg:before:h-2 before:mb-1 lg:before:mb-3 before:bg-gradient-to-b from-[#FFD482] from-13% to-[#FFBE82] to-119%
         before:rounded"
       >

@@ -27,7 +27,9 @@
         <!--Location and Date areas-->
         <div class="flex items-center gap-2 lg:gap-6 2xl:gap-[34px]">
           <div class="w-[96px] lg:w-[137px]">
-            <p class=" font-medium text-xs lg:text-base 2xl:text-lg leading-[0.94]">Where</p>
+            <p class=" font-medium text-xs lg:text-base 2xl:text-lg leading-[0.94]">
+              Where
+            </p>
             <div class="flex items-center truncate">
               <p class="pr-[4px] lg:pr-3 2xl:pr-[26px] text-[10px] lg:text-xs 2xl:text-xs text-[#9498A4] truncate">
                 Center Point, London
@@ -65,8 +67,8 @@
     <div class="relative mx-auto md:mx-0 mt-[10px] w-[300px] lg:w-[29.37rem]">
       <img src="../assets/images/man.png" alt="man-with-phone">
       <img
-        src="../assets/images/orion_navigation-map.png" alt="navigation-map" class="absolute top-0 left-0
-       lg:top-[43px] lg:left-[39px]"
+        src="../assets/images/orion_navigation-map.png" alt="navigation-map"
+        class="absolute top-0 left-0 lg:top-[43px] lg:left-[39px]"
       >
       <img src="../assets/images/orion_globe.png" alt="globe" class="absolute top-[28px] lg:top-[105px] right-0">
 
@@ -79,25 +81,25 @@
         <img src="../assets/images/sky-wild.png" alt="sky-wild">
         <p
           class=" font-medium text-[7px] lg:text-[10px] 2xl:text-xs text-center truncate leading-[1.25] px-[10px]
-          2xl:px-[18px] pt-[11px] pb-[24px] 2xl:pb-[31px] bg-white-light rounded-b-[10px] "
+          2xl:px-[18px] pt-[11px] pb-[24px] 2xl:pb-[31px] bg-white-light rounded-b-[10px]"
         >
           Dubai moruvumi
         </p>
         <div
           class="flex items-center p-[6px] bg-white-light rounded-[5px] absolute top-[12px] right-[-6px]
-        2xl:top-[38px] lg:right-[-5px]"
+          2xl:top-[38px] lg:right-[-5px]"
         >
           <svg class="w-[9px] h-[12px] fill-inherit mr-[5px]">
             <use href="../assets/images/symbol-defs.svg#icon-location-svg" />
           </svg>
-          <p class="font-medium text-[10px]">Dubai</p>
+          <p class="font-medium text-[10px]">
+            Dubai
+          </p>
         </div>
         <div
           class=" absolute left-0 lg:left-[8px] 2xl:left-[23px] bottom-[-16px] w-[87px] h-[33px]"
         >
-          <img
-            src="../assets/images/group-avatars.png" alt="girl-logo" class="object-cover"
-          >
+          <img src="../assets/images/group-avatars.png" alt="girl-logo" class="object-cover">
         </div>
       </div>
     </div>

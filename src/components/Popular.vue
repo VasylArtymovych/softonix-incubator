@@ -29,8 +29,8 @@
       snap-x snap-mandatory"
     >
       <li
-        v-for="card in cardsData" :key="card.title" class="w-[300px] 2xl:w-[386px] p-3 shrink-0 snap-start bg-white
-      rounded-2xl"
+        v-for="card in cardsData" :key="card.title"
+        class="w-[300px] 2xl:w-[386px] p-3 shrink-0 snap-start bg-white rounded-2xl"
       >
         <img :src="card.img" :alt="card.title" class="block mb-3 lg:mb-6 lg:h-[252px]">
         <div class="p-1 lg:p-3">

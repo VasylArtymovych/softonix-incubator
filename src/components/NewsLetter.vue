@@ -4,8 +4,7 @@
   >
     <div class="py-[45px] lg:py-[75px] bg-[#FFD482] bg-[url('@/assets/images/news-bg-lines-img.png')] rounded-[30px]">
       <h3
-        class="mb-2 lg:mb-4 font-semibold text-[20px] text lg:text-[40px] leading-[1] tracking-[0.0015rem]
-          text-center"
+        class="mb-2 lg:mb-4 font-semibold text-[20px] text lg:text-[40px] leading-[1] tracking-[0.0015rem] text-center"
       >
         Sign up to our newsletter
       </h3>

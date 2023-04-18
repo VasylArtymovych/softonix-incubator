@@ -8,7 +8,6 @@
   <Testimonial />
   <NewsLetter />
   <Footer />
-  <!-- <Temp /> -->
 </template>
 
 <script lang="ts" setup>
@@ -21,7 +20,6 @@ import Top from './components/Top.vue'
 import Testimonial from './components/Testimonial.vue'
 import NewsLetter from './components/NewsLetter.vue'
 import Footer from './components/Footer.vue'
-// import Temp from './components/Temp.vue'
 
 </script>
 
