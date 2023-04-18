@@ -71,9 +71,15 @@ const images = [img1, img2, img3, img4, img5, img6]
     grid-column: 2 / 3;
     grid-row: 4;
 }
+.img-list__item {
+  transition: transform 0.3s ease-in-out;
+}
 .img-list__item:hover {
   transform: perspective(400px) rotateY(7deg)
 }
+// .img-list__item {
+//   animation: rotateY 3000ms infinite alternate backwards ease-in-out 1000ms;
+// }
 
 @media (min-width: 768px) {
   .img-list {
@@ -121,6 +127,16 @@ const images = [img1, img2, img3, img4, img5, img6]
     height: 263px;
     position: relative;
     top: -13px;
+  }
+}
+
+@keyframes rotateY {
+  0% {
+    transform: perspective(400px) rotateY(7deg);
+  }
+
+  100% {
+    transform: perspective(400px) rotateY(-7deg);
   }
 }
 
