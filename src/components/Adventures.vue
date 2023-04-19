@@ -44,7 +44,7 @@
         Our Experience
       </h4>
       <!--Section title-->
-      <SectionTitle class="md:mb-[14px] 2xl:mb-5">
+      <SectionTitle class="md:mb-[14px] 2xl:mb-5 leading-[1.18]">
         Our Stories Have Adventures
       </SectionTitle>
       <p class=" text-xs lg:text-base leading-[1.62] mb-3 md:mb-[14px] lg:mb-10 2xl:max-w-[460px] text-secondary">

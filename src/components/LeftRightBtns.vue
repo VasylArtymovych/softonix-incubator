@@ -1,12 +1,15 @@
 <template>
-  <div class="flex gap-2 lg:gap-4 mb-3 md:mb-0">
+  <div class="flex justify-end gap-2 lg:gap-4">
     <div
       v-for="btn in btns" :key="btn.arrow"
-      class="group w-6 h-6 lg:w-[40px] lg:h-[40px] border border-primary rounded-full
-            flex justify-center items-center hover:bg-primary focus:bg-primary"
+      class="group w-6 h-6 md:w-[40px] md:h-[40px] lg:w-[54px] lg:h-[54px] border border-primary rounded-full
+        flex justify-center items-center hover:bg-primary focus:bg-primary cursor-pointer"
       @click="btn.handler"
     >
-      <svg class="w-[4.5px] h-[9px] fill-primary group-hover:fill-white group-focus:fill-white">
+      <svg
+        class="w-[7px] h-[10px] lg:w-[9px] lg:h-[13px] fill-primary group-hover:fill-white
+          group-focus:fill-white"
+      >
         <use :href="getSvgUrl(btn.arrow)" />
       </svg>
     </div>
@@ -16,19 +19,16 @@
 <script lang="ts" setup>
 import svgSprite from '@/assets/images/symbol-defs.svg'
 
-// interface IProps {
-//   onLeftBtn: () => void
-// }
+interface IProps {
+  onLeftBtn: () => void
+  onRightBtn: () => void
+}
 
-const onLeftBtn = () => {
-  console.log('click left')
-}
-const onRightBtn = () => {
-  console.log('click right')
-}
+const props = defineProps<IProps>()
+
 const btns = [
-  { arrow: 'left', handler: onLeftBtn },
-  { arrow: 'right', handler: onRightBtn }
+  { arrow: 'left', handler: props.onLeftBtn },
+  { arrow: 'right', handler: props.onRightBtn }
 ]
 
 const getSvgUrl = (name: string) => {

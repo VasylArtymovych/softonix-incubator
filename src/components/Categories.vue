@@ -12,22 +12,11 @@
           already grouped by category.
         </p>
       </div>
-      <!--Categories btns wrapper-->
-      <div class="flex justify-end gap-2 lg:gap-4 mb-3 md:mb-0">
-        <div
-          v-for="btn in btns" :key="btn.arrow"
-          class="group w-6 h-6 lg:w-[54px] lg:h-[54px] border border-primary rounded-full
-          flex justify-center items-center hover:bg-primary focus:bg-primary cursor-pointer"
-          @click="btn.handler"
-        >
-          <svg
-            class="w-[7px] h-[10px] lg:w-[9px] lg:h-[13px] fill-primary group-hover:fill-white
-          group-focus:fill-white"
-          >
-            <use :href="getSvgUrl(btn.arrow)" />
-          </svg>
-        </div>
-      </div>
+      <!--Categories arrow btns-->
+      <LeftRightBtns
+        :onLeftBtn="onLeftBtn" :onRightBtn="onRightBtn"
+        class="mb-3 md:mb-0"
+      />
     </div>
     <!--Carousel-->
     <div class="w-[300px] md:w-[100%] mx-auto md:mx-0 overflow-hidden">
@@ -53,13 +42,13 @@
 <script lang="ts" setup>
 import MainContainer from '@/components/Container.vue'
 import SectionTitle from './SectionTitle.vue'
+import LeftRightBtns from './LeftRightBtns.vue'
 import Pic1 from '../assets/images/categories-pic-1.png'
 import Pic2 from '../assets/images/categories-pic-2.png'
 import Pic3 from '../assets/images/categories-pic-3.png'
 import Pic4 from '../assets/images/categories-pic-4.png'
 import Pic5 from '../assets/images/categories-pic-5.png'
 import Pic6 from '../assets/images/categories-pic-6.png'
-import svgSprite from '@/assets/images/symbol-defs.svg'
 import { useWindowWidth } from '@/hooks/windowWidth'
 
 const listData = [
@@ -120,15 +109,6 @@ const onRightBtn = () => {
 watch(type, () => {
   position.value = 0
 })
-
-const btns = [
-  { arrow: 'left', handler: onLeftBtn },
-  { arrow: 'right', handler: onRightBtn }
-]
-
-const getSvgUrl = (name: string) => {
-  return (`${svgSprite}#icon-arrow-${name}-svg`)
-}
 
 </script>
 

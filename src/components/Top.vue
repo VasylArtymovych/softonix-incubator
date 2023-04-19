@@ -2,7 +2,7 @@
   <MainContainer class="pt-[50px] pb-4 lg:py-[37px] lg:mt-[53px]">
     <!--Top title and btns wrapper-->
     <div class="flex flex-col items-center w-[300px] md:w-[390px] lg:w-[527px] mx-auto mb-2 md:mb-4 lg:mb-[51px]">
-      <SectionTitle class="mb-2 lg:mb-4">
+      <SectionTitle class="mb-2 lg:mb-4 leading-[1.18]">
         Top Destinations
       </SectionTitle>
       <p class="text-xs lg:text-[16px] leading-[1] text-secondary mb-3 lg:mb-7 text-center">

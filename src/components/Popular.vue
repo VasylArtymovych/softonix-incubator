@@ -2,25 +2,11 @@
   <MainContainer class=" pt-[50px] pb-4 lg:py-[50px] lg:mt-8">
     <!--Popular title and btns wrapper-->
     <div class="md:flex justify-between items-center w-[300px] md:w-full  mx-auto md:mx-0 mb-3 lg:mb-6 2xl:mb-[35px]">
-      <SectionTitle class="md:w-[300px] lg:w-[400px]">
+      <SectionTitle class="md:w-[300px] lg:w-[400px] leading-[1.18]">
         Find Popular Destination
       </SectionTitle>
-      <!--Inner btns wrapper-->
-      <div class="flex justify-end gap-2 lg:gap-4">
-        <div
-          v-for="btn in btns" :key="btn.arrow"
-          class="group w-6 h-6 lg:w-[54px] lg:h-[54px] border border-primary rounded-full
-          flex justify-center items-center hover:bg-primary focus:bg-primary cursor-pointer"
-          @click="btn.handler"
-        >
-          <svg
-            class="w-[7px] h-[10px] lg:w-[9px] lg:h-[13px] fill-primary group-hover:fill-white
-          group-focus:fill-white"
-          >
-            <use :href="getSvgUrl(btn.arrow)" />
-          </svg>
-        </div>
-      </div>
+      <!--Arrow btns-->
+      <LeftRightBtns :onLeftBtn="previous" :onRightBtn="next" />
     </div>
     <!--Card list-->
     <ul
@@ -64,24 +50,15 @@
 import MainContainer from '@/components/Container.vue'
 import SectionTitle from './SectionTitle.vue'
 import CustomButton from '@/components/Button.vue'
+import LeftRightBtns from './LeftRightBtns.vue'
 import img1 from '@/assets/images/popular-img-1.png'
 import img2 from '@/assets/images/popular-img-2.png'
 import img3 from '@/assets/images/popular-img-3.png'
-import svgSprite from '@/assets/images/symbol-defs.svg'
 import { useScrollCarouselState } from '@/hooks/scrollCarouselState'
 import { useWindowWidth } from '@/hooks/windowWidth'
 
 const { type } = useWindowWidth()
 const { container, previous, next } = useScrollCarouselState(type)
-
-const btns = [
-  { arrow: 'left', handler: previous },
-  { arrow: 'right', handler: next }
-]
-
-const getSvgUrl = (name: string) => {
-  return (`${svgSprite}#icon-arrow-${name}-svg`)
-}
 
 const cardsData = [
   {
