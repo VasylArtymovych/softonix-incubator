@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-background fixed z-50 top-0 left-0 right-0">
+  <header class="bg-background fixed z-50 top-0 left-0 right-0">
     <!-- Bounding container-->
     <MainContainer
       class=" py-6 text-primary font-nav md:flex justify-between items-center relative"
@@ -49,7 +49,7 @@
         </CustomButton>
       </div>
     </MainContainer>
-  </div>
+  </header>
 </template>
 
 <script lang="ts" setup>
