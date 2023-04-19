@@ -16,7 +16,7 @@
         </svg>
       </button>
       <!--Burger menu-->
-      <div
+      <nav
         class="md:flex justify-between items-center grow pb-6 md:pb-0 w-full sm:w-6/12 md:w-auto
         absolute z-40 md:static top-[83px] transition-all duration-300 ease-in bg-background"
         :class="[isMenuOpen ? 'right-0' : 'right-[-100%]']"
@@ -47,7 +47,7 @@
             <use href="../assets/images/symbol-defs.svg#icon-send-svg" />
           </svg>
         </CustomButton>
-      </div>
+      </nav>
     </MainContainer>
   </header>
 </template>
