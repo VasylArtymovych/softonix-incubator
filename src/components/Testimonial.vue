@@ -24,7 +24,7 @@
           v-for="data in cardMetaData" :key="data.author"
           class="w-full p-3 lg:p-[30px] bg-white rounded-[14px] shrink-0 snap-start"
         >
-          <p class="text-[10px] md:text-[12px] lg:text-[18px] leading-[1.67] mb-3 lg:mb-[26px]">
+          <p class="card-text_overHight text-[10px] md:text-[12px] lg:text-[18px] leading-[1.67] mb-3 lg:mb-[26px]">
             {{ data.text }}
           </p>
           <div class="flex justify-between items-end">
@@ -103,5 +103,14 @@ const getSvgUrl = (name: string) => {
     &::-webkit-scrollbar {
       display: none;
     }
+  }
+
+  .card-text_overHight {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    max-height: calc(1.67 * 4);  //line-height * number of lines
   }
 </style>
