@@ -10,11 +10,17 @@
               type="text"
               class="block font-medium w-full"
             >
-            <input v-model="localContact.description" type="text" class="block mt-1 text-gray w-full">
+            <input
+              v-model="localContact.description"
+              type="text"
+              class="block mt-1 text-gray w-full"
+            >
           </template>
 
           <template v-else>
-            <p class="font-medium">{{ contact.name }}</p>
+            <p class="font-medium">
+              {{ contact.name }}
+            </p>
             <p class="text-gray mt-1 truncate">
               {{ contact.description }}
             </p>
@@ -34,6 +40,7 @@
 
           <span
             class="text-blue-500 font-medium text-xs cursor-pointer hover:underline"
+            :class="{'bg-slate-500 text-white': !isValidFields}"
             @click="onSave"
           >Save</span>
         </template>
@@ -69,7 +76,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, nextTick } from 'vue'
+import { ref, nextTick, computed } from 'vue'
+import type { ComputedRef } from 'vue'
 import type { IContact } from '@/types'
 import IconEnvelope from '@/components/icons/IconEnvelope.vue'
 import IconPhone from '@/components/icons/IconPhone.vue'
@@ -88,6 +96,10 @@ const localContact = ref<Omit<IContact, 'id'>>({
   image: ''
 })
 
+const isValidFields: ComputedRef<boolean> = computed(() => {
+  return localContact.value.name.length > 0 && localContact.value.description.length > 0
+})
+
 const editMode = ref(false)
 
 async function triggerEditMode () {
@@ -98,7 +110,9 @@ async function triggerEditMode () {
 }
 
 function onSave () {
-  emit('save', localContact.value)
-  editMode.value = false
+  if (isValidFields.value) {
+    emit('save', localContact.value)
+    editMode.value = false
+  }
 }
 </script>

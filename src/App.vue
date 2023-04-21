@@ -1,7 +1,14 @@
 <template>
   <div class="max-w-[1440px] p-6">
-    <h3 class="font-medium m-0">Contact list</h3>
-
+    <div class="flex justify-between">
+      <h3 class="font-medium m-0">Contact list</h3>
+      <button
+        class="p-2 border rounded-lg"
+        @click="createEmptyCard"
+      >
+        Add contact
+      </button>
+    </div>
     <div class="contact-list grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))] grid gap-5 my-5">
       <ContactItem
         v-for="(contact, index) in contacts"
@@ -19,6 +26,7 @@ import { ref } from 'vue'
 import type { IContact } from '@/types'
 import ContactItem from '@/components/ContactItem.vue'
 
+const id = ref(4)
 const contacts = ref<IContact[]>([
   {
     id: 1,
@@ -46,5 +54,14 @@ function deleteContact (index: number) {
 
 function onContactSave (contact: IContact, index: number) {
   contacts.value[index] = { ...contact }
+}
+
+function createEmptyCard () {
+  contacts.value.unshift({
+    id: id.value++,
+    name: '',
+    description: '',
+    image: ''
+  })
 }
 </script>
