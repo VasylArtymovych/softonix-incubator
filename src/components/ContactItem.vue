@@ -141,7 +141,7 @@ const isValidCreateFields: ComputedRef<boolean> = computed(() => {
   localContact.value.image.length > 0
 })
 
-async function triggerEditMode () {
+function triggerEditMode () {
   editMode.value = true
   localContact.value = { ...props.contact }
 }
