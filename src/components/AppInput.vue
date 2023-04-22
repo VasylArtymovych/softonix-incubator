@@ -3,7 +3,7 @@
     :value="modelValue"
     :type="type"
     :placeholder="placeholder"
-    class="rounded-md font-medium border border-gray-medium focus:border-gray-dark text-sm p-2 block w-full"
+    class="block w-full"
     @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
   >
 </template>
@@ -21,7 +21,3 @@ defineEmits<{
   (e: 'update:modelValue', value: string | number): void
 }>()
 </script>
-
-<style lang="scss" scoped>
-
-</style>

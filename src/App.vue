@@ -1,21 +1,18 @@
 <template>
   <div class="max-w-[1440px] p-6">
-    <div class="flex justify-between">
-      <h3 class="font-medium m-0">Contact list</h3>
-      <button
-        class="p-2 border rounded-lg"
-        @click="createEmptyCard"
-      >
-        Add contact
-      </button>
-    </div>
+    <h3 class="font-medium m-0 inline-block mr-4">Contact list</h3>
+    <AppButton @click="createEmptyCard">
+      Create-contact
+    </AppButton>
+
     <div class="contact-list grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))] grid gap-5 my-5">
       <ContactItem
         v-for="(contact, index) in contacts"
         :key="contact.id"
         :contact="contact"
         @delete="deleteContact(index)"
-        @save="onContactSave($event, index)"
+        @save="updateContactInfo($event, index)"
+        @create="createContact($event, index)"
       />
     </div>
   </div>
@@ -25,8 +22,8 @@
 import { ref } from 'vue'
 import type { IContact } from '@/types'
 import ContactItem from '@/components/ContactItem.vue'
+import AppButton from '@/components/AppButton.vue'
 
-const id = ref(4)
 const contacts = ref<IContact[]>([
   {
     id: 1,
@@ -47,12 +44,13 @@ const contacts = ref<IContact[]>([
     image: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60'
   }
 ])
+const id = ref(4)
 
 function deleteContact (index: number) {
   contacts.value.splice(index, 1)
 }
 
-function onContactSave (contact: IContact, index: number) {
+function updateContactInfo (contact: IContact, index: number) {
   contacts.value[index] = { ...contact }
 }
 
@@ -63,5 +61,9 @@ function createEmptyCard () {
     description: '',
     image: ''
   })
+}
+
+function createContact (contact: IContact, index: number) {
+  contacts.value[index] = { ...contact }
 }
 </script>
