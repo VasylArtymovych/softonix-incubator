@@ -120,7 +120,8 @@ const props = defineProps<{
 
 const emit = defineEmits(['delete', 'save', 'create'])
 
-const localContact = ref<Omit<IContact, 'id'>>({
+const localContact = ref<IContact>({
+  id: props.contact.id,
   name: '',
   description: '',
   image: ''

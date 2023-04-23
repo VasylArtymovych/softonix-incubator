@@ -44,7 +44,6 @@ const contacts = ref<IContact[]>([
     image: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60'
   }
 ])
-const id = ref(4)
 
 function deleteContact (index: number) {
   contacts.value.splice(index, 1)
@@ -56,7 +55,7 @@ function updateContactInfo (contact: IContact, index: number) {
 
 function createEmptyCard () {
   contacts.value.unshift({
-    id: id.value++,
+    id: contacts.value.length + 1,
     name: '',
     description: '',
     image: ''
