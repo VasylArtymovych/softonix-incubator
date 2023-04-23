@@ -54,10 +54,21 @@
         </template>
       </div>
 
-      <img
-        class="w-[40px] h-[40px] object-cover ml-2 rounded-full shrink-0"
-        :src="contact.image" alt="contact-logo"
+      <div
+        class="w-[40px] h-[40px] ml-2 flex justify-center items-center shrink-0 rounded-full border border-gray-medium
+        bg-gray-light overflow-hidden"
       >
+        <span v-if="imageHasError" class="uppercase">
+          {{ imageAbrav }}
+        </span>
+        <img
+          v-else
+          class="object-cover"
+          :src="contact.image" alt="contact-logo"
+          @error="imageHasError = true"
+          @load="imageHasError = false"
+        >
+      </div>
     </div>
 
     <div class="flex justify-end mt-2 gap-2">
@@ -135,6 +146,15 @@ const editMode = ref(false)
 
 const isValidEditFields: ComputedRef<boolean> = computed(() => {
   return localContact.value.name.length > 0 && localContact.value.description.length > 0
+})
+
+const imageHasError = ref(false)
+
+const imageAbrav = computed(() => {
+  return props.contact.name.trim().split(' ').reduce((acc, el) => {
+    if (acc.length < 2 && !!el) acc = acc + el[0]
+    return acc
+  }, '')
 })
 
 function triggerEditMode () {
