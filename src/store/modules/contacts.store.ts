@@ -36,20 +36,21 @@ export const useContactsStore = defineStore('contactsStore', () => {
     }
   ])
 
-  const searchedContacts = computed(() => contacts.value.filter(c =>
-    (c.name.toLocaleLowerCase().includes(normalizedSearchQuery.value) ||
-    c.description.toLocaleLowerCase().includes(normalizedSearchQuery.value))))
-
-  const searchedAndSelectedContacts = computed(() => searchedContacts.value.filter(c =>
-    selectedRole.value ? c.role === selectedRole.value : true).sort((a, b) => {
-    if (optToSort.value === 'ascending') {
-      return a.name.localeCompare(b.name)
-    } else if (optToSort.value === 'descending') {
-      return b.name.localeCompare(a.name)
-    } else {
-      return 0
-    }
-  }))
+  const searchedSelectedSortedContacts = computed(() => contacts.value
+    .filter(c =>
+      (c.name.toLocaleLowerCase().includes(normalizedSearchQuery.value) ||
+    c.description.toLocaleLowerCase().includes(normalizedSearchQuery.value)))
+    .filter(c =>
+      selectedRole.value ? c.role === selectedRole.value : true)
+    .sort((a, b) => {
+      if (optToSort.value === 'ascending') {
+        return a.name.localeCompare(b.name)
+      } else if (optToSort.value === 'descending') {
+        return b.name.localeCompare(a.name)
+      } else {
+        return 0
+      }
+    }))
 
   function addContact (contact: IContact) {
     contacts.value.push(contact)
@@ -69,11 +70,10 @@ export const useContactsStore = defineStore('contactsStore', () => {
     searchQuery,
     roles,
     selectedRole,
-    optToSort,
     sortOptions,
+    optToSort,
     contacts,
-    searchedContacts,
-    searchedAndSelectedContacts,
+    searchedSelectedSortedContacts,
     addContact,
     deleteContact,
     updateContact

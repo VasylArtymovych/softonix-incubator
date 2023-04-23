@@ -10,15 +10,25 @@
     </AppButton>
   </div>
 
-  <div>
-    <AppSelect v-model="optToSort" :options="sortOptions" :defaultOpt="'Sort by name'" />
-    <AppInput v-model="searchQuery" placeholder="search" />
-    <AppSelect v-model="selectedRole" :options="roles" :defaultOpt="'Select role'" />
+  <div class="flex gap-4 mt-4">
+    <AppSelect
+      v-model="optToSort"
+      :options="sortOptions"
+      :defaultOpt="'Sort by name'"
+    />
+    <AppInput
+      v-model="searchQuery" placeholder="search"
+    />
+    <AppSelect
+      v-model="selectedRole"
+      :options="roles"
+      :defaultOpt="'Select role'"
+    />
   </div>
 
   <div class="grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))] grid gap-5 my-5">
     <ContactItem
-      v-for="contact in searchedAndSelectedContacts"
+      v-for="contact in searchedSelectedSortedContacts"
       :key="contact.id"
       class="cursor-pointer"
       :contact="contact"
@@ -32,7 +42,6 @@
 import { useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useContactsStore } from '@/store'
-
 import ContactItem from '@/components/ContactItem.vue'
 import AppButton from '@/components/AppButton.vue'
 import IconPlus from '@/components/icons/IconPlus.vue'
@@ -45,7 +54,7 @@ const contactsStore = useContactsStore()
 
 const {
   searchQuery, selectedRole, roles, optToSort,
-  sortOptions, searchedAndSelectedContacts
+  sortOptions, searchedSelectedSortedContacts
 } = storeToRefs(contactsStore)
 
 const { updateContact, deleteContact } = contactsStore

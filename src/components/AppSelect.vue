@@ -1,6 +1,7 @@
 <template>
   <select
     :value="modelValue"
+    class="border border-gray-medium text-sm text-gray-dark rounded-md p-2"
     @change="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
   >
     <option disabled value="">{{ defaultOpt }}</option>
