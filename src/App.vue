@@ -63,6 +63,6 @@ function createEmptyCard () {
 }
 
 function createContact (contact: IContact, index: number) {
-  contacts.value[index] = { ...contact }
+  contacts.value[index] = contact
 }
 </script>
