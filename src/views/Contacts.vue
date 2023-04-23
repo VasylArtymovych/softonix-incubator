@@ -10,9 +10,15 @@
     </AppButton>
   </div>
 
+  <div>
+    <AppSelect v-model="optToSort" :options="sortOptions" :defaultOpt="'Sort by name'" />
+    <AppInput v-model="searchQuery" placeholder="search" />
+    <AppSelect v-model="selectedRole" :options="roles" :defaultOpt="'Select role'" />
+  </div>
+
   <div class="grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))] grid gap-5 my-5">
     <ContactItem
-      v-for="contact in contacts"
+      v-for="contact in searchedAndSelectedContacts"
       :key="contact.id"
       class="cursor-pointer"
       :contact="contact"
@@ -30,11 +36,18 @@ import { useContactsStore } from '@/store'
 import ContactItem from '@/components/ContactItem.vue'
 import AppButton from '@/components/AppButton.vue'
 import IconPlus from '@/components/icons/IconPlus.vue'
+import AppInput from '@/components/AppInput.vue'
+import AppSelect from '@/components/AppSelect.vue'
 
 const router = useRouter()
 
 const contactsStore = useContactsStore()
-const { contacts } = storeToRefs(contactsStore)
+
+const {
+  searchQuery, selectedRole, roles, optToSort,
+  sortOptions, searchedAndSelectedContacts
+} = storeToRefs(contactsStore)
+
 const { updateContact, deleteContact } = contactsStore
 
 function createNewContact () {
