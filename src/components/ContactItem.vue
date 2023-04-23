@@ -28,7 +28,7 @@
         </template>
 
         <template #right>
-          <span :class="[!isValidCreateFields ? 'text-gray' : 'text-blue-500']" @click="onCreate">
+          <span :class="[!isValidEditFields ? 'text-gray' : 'text-blue-500']" @click="onCreate">
             Create
           </span>
         </template>
@@ -137,11 +137,6 @@ const isValidEditFields: ComputedRef<boolean> = computed(() => {
   return localContact.value.name.length > 0 && localContact.value.description.length > 0
 })
 
-const isValidCreateFields: ComputedRef<boolean> = computed(() => {
-  return localContact.value.name.length > 0 && localContact.value.description.length > 0 &&
-  localContact.value.image.length > 0
-})
-
 function triggerEditMode () {
   editMode.value = true
   localContact.value = { ...props.contact }
@@ -155,7 +150,7 @@ function onSave () {
 }
 
 function onCreate () {
-  if (isValidCreateFields.value) {
+  if (isValidEditFields.value) {
     emit('create', localContact.value)
   }
 }
