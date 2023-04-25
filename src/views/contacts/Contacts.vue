@@ -1,4 +1,6 @@
 <template>
+  <Header />
+
   <div class="flex items-center gap-4">
     <h3 class="font-medium m-0">Contact list</h3>
 
