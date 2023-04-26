@@ -18,17 +18,30 @@ class JobOpeningsService {
     })
   }
 
-  createDepartmentOpenings (data: IJobOpening[] = []) {
-    return data.reduce((acc: IDepartmentOpenings, j: IJobOpening) => {
+  createDepartmentOpenings (jobOpen: IJobOpening[] = [], departs: IDepartment[]) {
+    const departmentNamesMap = this.createDepartmentNamesMap(departs)
+
+    return jobOpen.reduce((acc: IDepartmentOpenings, j: IJobOpening) => {
       if (j.departments.length <= 0) {
-        acc.other ? acc.other.push(j.id) : acc.other = [j.id]
+        acc.Other ? acc.Other.push(j.id) : acc.Other = [j.id]
       }
+
       j.departments.forEach((d: string) => {
-        acc[d] ? acc[d].push(j.id) : acc[d] = [j.id]
+        if (departmentNamesMap[d]) {
+          acc[departmentNamesMap[d]] ? acc[departmentNamesMap[d]].push(j.id) : acc[departmentNamesMap[d]] = [j.id]
+        }
       })
 
       return acc
     }, {})
+  }
+
+  createDepartmentNamesMap (departments: IDepartment[] = []): IDepartmentNamesMap {
+    const hashMap: IDepartmentNamesMap = {}
+
+    departments.forEach(d => (hashMap[d.value] = d.name))
+
+    return hashMap
   }
 
   timer (delay = 1000) {

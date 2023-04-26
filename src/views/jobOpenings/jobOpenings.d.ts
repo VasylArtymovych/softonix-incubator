@@ -14,3 +14,8 @@ interface IDepartment {
 interface IDepartmentOpenings {
   [key: string]: string[]
 }
+
+interface IDepartmentNamesMap {
+  [key: string]: string
+}
+

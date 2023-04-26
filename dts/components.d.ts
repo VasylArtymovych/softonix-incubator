@@ -16,6 +16,7 @@ declare module '@vue/runtime-core' {
     IconEnvelope: typeof import('./../src/components/icons/IconEnvelope.vue')['default']
     IconPhone: typeof import('./../src/components/icons/IconPhone.vue')['default']
     IconPlus: typeof import('./../src/components/icons/IconPlus.vue')['default']
+    JobOpeningsList: typeof import('./../src/views/jobOpenings/components/JobOpeningsList.vue')['default']
     JobOpeningsMultiselect: typeof import('./../src/views/jobOpenings/components/JobOpeningsMultiselect.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

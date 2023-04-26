@@ -10,14 +10,18 @@
     </div>
 
     <div v-else>
-      <JobOpeningsMultiselect :departments="departments" />
+      <JobOpeningsMultiselect />
+
+      <hr>
+
+      <JobOpeningsList />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 const jobOpeningsStore = useJobOpeningsStore()
-const { departments, loading, error } = storeToRefs(jobOpeningsStore)
+const { loading, error } = storeToRefs(jobOpeningsStore)
 
 </script>
 
