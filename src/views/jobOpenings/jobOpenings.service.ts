@@ -44,6 +44,16 @@ class JobOpeningsService {
     return hashMap
   }
 
+  createJobOpeningsMap (jobOpenings: IJobOpening[]) {
+    const jobOpeningsMap: IJobOpeningsMap = {}
+
+    jobOpenings.forEach(jobOp => {
+      jobOpeningsMap[jobOp.id] = { ...jobOp }
+    })
+
+    return jobOpeningsMap
+  }
+
   timer (delay = 1000) {
     return new Promise(resolve => {
       setTimeout(() => { resolve('') }, delay)

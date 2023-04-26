@@ -8,8 +8,12 @@ html {
 }
 
 body {
-  @apply font-main text-base text-primary bg-gray-light;
+  @apply font-main text-base text-primary bg-gray-light min-h-screen;
   -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  min-height: 100vh;
 }
 
 a {
@@ -21,7 +25,8 @@ a {
   }
 }
 
-img, svg {
+img,
+svg {
   display: initial;
 }
 
@@ -33,7 +38,7 @@ img, svg {
 
 *::-webkit-scrollbar {
   height: 6px;
-  width:6px
+  width: 6px
 }
 
 *::-webkit-scrollbar-thumb {

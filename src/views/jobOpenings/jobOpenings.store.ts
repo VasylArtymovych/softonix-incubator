@@ -2,7 +2,8 @@ export const useJobOpeningsStore = defineStore('jobOpeningsStore', () => {
   const jobOpenings = ref<IJobOpening[]>([])
   const departments = ref<IDepartment[]>([])
   const departmentOpenings = ref<IDepartmentOpenings | null>(null)
-  const checkedDepartments = ref<string[]>([])
+  const selectedDepartments = ref<string[]>([])
+  const jobOpeningsMap = ref<IJobOpeningsMap | null>(null)
 
   const loading = ref(false)
   const error = ref('')
@@ -16,6 +17,7 @@ export const useJobOpeningsStore = defineStore('jobOpeningsStore', () => {
       .then(res => {
         if (res[0].status === 'fulfilled') {
           jobOpenings.value = res[0].value as IJobOpening[]
+          jobOpeningsMap.value = jobOpeningsService.createJobOpeningsMap(res[0].value)
         }
 
         if (res[1].status === 'fulfilled') {
@@ -38,7 +40,8 @@ export const useJobOpeningsStore = defineStore('jobOpeningsStore', () => {
     jobOpenings,
     departments,
     departmentOpenings,
-    checkedDepartments,
+    selectedDepartments,
+    jobOpeningsMap,
     loading,
     error,
     loadData

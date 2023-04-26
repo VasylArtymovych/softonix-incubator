@@ -19,3 +19,6 @@ interface IDepartmentNamesMap {
   [key: string]: string
 }
 
+interface IJobOpeningsMap {
+  [key: string]: Omit<IJobOpening, 'id'>
+}
