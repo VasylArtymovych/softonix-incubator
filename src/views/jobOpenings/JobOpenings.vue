@@ -7,7 +7,13 @@
       >
         <div class="p-2">
           <div class="mb-1 flex justify-between">
-            <h2 class="uppercase font-semibold text-sm text-gray">Job Openings</h2>
+            <h2 class="font-semibold text-sm text-gray">
+              JOB OPENINGS
+              <span
+                class="inline-flex justify-center items-center w-5 h-5 text-white rounded-full ml-2 bg-blue-500"
+                title="Info"
+              >i</span>
+            </h2>
             <AppButton>
               <span class="px-1">&#10140;</span>
             </AppButton>
@@ -21,7 +27,6 @@
 
           <div v-else>
             <JobOpeningsMultiselect />
-
             <JobOpeningsDepartmentsList :visible="visibleList" />
           </div>
         </div>
@@ -33,6 +38,7 @@
 
     <!--Right side-->
     <div class="w-2/3 border-l border-gray-medium p-6">
+      <h2 class="text-xl font-bold uppercase text-center text-gray">Job opening information page</h2>
       <RouterView #default="{Component}">
         <Transition :duration="550" :name="$route.meta.transition as string || 'fade'" mode="out-in">
           <component :is="Component" :key="$route.path" />
