@@ -1,9 +1,15 @@
 <template>
   <ul v-if="jobOpeningsMap" class="list list-disc list-inside pl-2">
-    <li v-for="jobOpId in firstFiveItemsArr" :key="jobOpId" class="truncate text-lightBlue-500 peer decoration-1">
-      <a href="#" class="decoration-1">
+    <li
+      v-for="jobOpId in firstFiveItemsArr" :key="jobOpId"
+      class="truncate text-lightBlue-500"
+    >
+      <RouterLink
+        :to="{name: $routeNames.jobOpeningInfo, params: {jobOpenigId: jobOpId, title: jobOpeningsMap[jobOpId].title}}"
+        class="hover:underline"
+      >
         {{ jobOpeningsMap[jobOpId].title }}
-      </a>
+      </RouterLink>
     </li>
     <div class="text-lightBlue-600">
       <button v-if="vacancyIdArray.length > 5" @click="showAll = !showAll">
@@ -36,6 +42,9 @@ const firstFiveItemsArr = computed(() => {
 .list li::marker {
   color: green;
   font-size: 16px;
+}
 
+.link {
+  text-decoration:underline;
 }
 </style>

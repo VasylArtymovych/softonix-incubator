@@ -1,5 +1,6 @@
 <template>
   <div class="jobopenings flex min-h-full">
+    <!--Left side-->
     <div class="left w-1/3 py-6 pr-2">
       <div
         class="flex flex-col justify-between border border-gray-medium rounded-sm "
@@ -12,7 +13,7 @@
             </AppButton>
           </div>
 
-          <div v-if="loading" class="w-full text-center">Loading...</div>
+          <div v-if="loading" class="w-full text-gray font-semibold text-center ">Loading...</div>
 
           <div v-else-if="error">
             <h2>{{ error }}</h2>
@@ -30,8 +31,13 @@
       </div>
     </div>
 
-    <div class="rigth w-2/3 border-l border-gray-medium ">
-      some data
+    <!--Right side-->
+    <div class="w-2/3 border-l border-gray-medium p-6">
+      <RouterView #default="{Component}">
+        <Transition :duration="550" :name="$route.meta.transition as string || 'fade'" mode="out-in">
+          <component :is="Component" :key="$route.path" />
+        </Transition>
+      </RouterView>
     </div>
   </div>
 </template>
@@ -47,4 +53,27 @@ const visibleList = ref(true)
 .jobopenings {
   min-height: calc(100vh - 72px);
 }
+
+.slide-enter-active,
+.slide-leave-active {
+transition: all 0.3s ease-in-out;
+}
+.slide-leave-active {
+  transition-delay: 0.25s;
+}
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
 </style>

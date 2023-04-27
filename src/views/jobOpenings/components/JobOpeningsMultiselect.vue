@@ -5,7 +5,7 @@
     <div
       ref="multiSelectRef"
       class="relative flex grow-0 items-center flex-wrap gap-1 w-full min-h-[36px] border border-gray-medium p-1
-      pr-4 rounded hover:border-lightBlue-400"
+      pr-4 rounded hover:border-lightBlue-400 cursor-pointer"
       @click="focused = !focused"
     >
       <!--Selected options-->

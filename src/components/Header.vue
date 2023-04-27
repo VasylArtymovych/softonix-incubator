@@ -21,16 +21,15 @@
 </template>
 
 <script setup lang="ts">
-const { $routeNames } = useGlobalProperties()
 
 </script>
 
 <style scoped>
-  .router-link-exact-active {
+  .router-link-active {
     color: orange;
   }
 
-  .router-link-exact-active::after{
+  .router-link-active::after{
     content: "";
     display: block;
     width: 100%;

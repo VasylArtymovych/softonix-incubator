@@ -11,7 +11,7 @@ class JobOpeningsService {
   }
 
   async fetchDepartments (): Promise<IDepartment[]> {
-    await this.timer(2000)
+    await this.timer()
 
     return new Promise((resolve) => {
       resolve(departments)

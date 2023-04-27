@@ -1,9 +1,10 @@
 export const useJobOpeningsStore = defineStore('jobOpeningsStore', () => {
   const jobOpenings = ref<IJobOpening[]>([])
   const departments = ref<IDepartment[]>([])
+
   const departmentOpenings = ref<IDepartmentOpenings | null>(null)
-  const selectedDepartments = ref<string[]>([])
   const jobOpeningsMap = ref<IJobOpeningsMap | null>(null)
+  const selectedDepartments = ref<string[]>([])
 
   const loading = ref(false)
   const error = ref('')
