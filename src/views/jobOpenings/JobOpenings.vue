@@ -10,7 +10,8 @@
             <h2 class="font-semibold text-sm text-gray">
               JOB OPENINGS
               <span
-                class="inline-flex justify-center items-center w-5 h-5 text-white rounded-full ml-2 bg-blue-500"
+                class="info relative inline-flex justify-center items-center w-5 h-5 text-white rounded-full ml-2
+                bg-blue-500 hover:bg-[#1d4ed8]"
                 title="Info"
               >i</span>
             </h2>
@@ -58,6 +59,22 @@ const visibleList = ref(true)
 <style scoped>
 .jobopenings {
   min-height: calc(100vh - 72px);
+}
+
+.info::after {
+  content: 'Information';
+  display: none;
+  padding: 3px;
+  position: absolute;
+  top: -35px;
+  left: 17px;
+  color: #3b82f6;
+  background: rgb(201, 197, 197);
+  border: 1px solid #3b82f6;
+  transform: skewY(-10deg);
+}
+.info:hover.info::after {
+  display: block;
 }
 
 .nested-enter-active,
