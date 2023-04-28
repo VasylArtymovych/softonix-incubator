@@ -4,6 +4,7 @@
     <!--Select-->
     <div
       ref="multiSelectRef"
+      v-click-outside="()=>(focused = false)"
       class="relative flex grow-0 items-center flex-wrap gap-1 w-full min-h-[36px] border
       border-gray-medium p-1 pr-4 rounded hover:border-lightBlue-400 cursor-pointer"
       @click="focused = !focused"
@@ -65,6 +66,8 @@
 </template>
 
 <script setup lang="ts">
+import type { ObjectDirective, DirectiveBinding } from 'vue'
+
 const jobOpeningsStore = useJobOpeningsStore()
 const { selectedDepartments, departments, jobOpenings } = storeToRefs(jobOpeningsStore)
 
@@ -97,6 +100,21 @@ const handleChaeckbox = () => {
 const handleDelete = (i: number) => {
   selectedDepartments.value.splice(i, 1)
   setTimeout(fixTopPosition, 100)
+}
+
+const vClickOutside: ObjectDirective = {
+  mounted (el, binding: DirectiveBinding) {
+    el.clickOutside = function (e: Event) {
+      if (!(el === e.target || el.contains(e.target))) {
+        binding.value(e)
+      }
+    }
+    document.addEventListener('click', el.clickOutside)
+  },
+
+  unmounted (el) {
+    document.removeEventListener('click', el.clickOutside)
+  }
 }
 </script>
 
