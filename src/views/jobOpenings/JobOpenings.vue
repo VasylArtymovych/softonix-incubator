@@ -39,12 +39,14 @@
 
     <!--Right side-->
     <div class="w-2/3 border-l border-gray-medium p-6">
-      <h2 class="text-xl font-bold uppercase text-center text-gray">Job opening information page</h2>
-      <RouterView #default="{Component}">
-        <Transition :duration="550" :name="$route.meta.transition as string || 'fade'" mode="out-in">
-          <component :is="Component" :key="$route.path" />
-        </Transition>
-      </RouterView>
+      <div class="right sticky top-6">
+        <h2 class="text-xl font-bold uppercase text-center text-gray">Job opening information page</h2>
+        <RouterView #default="{Component}">
+          <Transition :duration="550" :name="$route.meta.transition as string || 'fade'" mode="out-in">
+            <component :is="Component" :key="$route.path" />
+          </Transition>
+        </RouterView>
+      </div>
     </div>
   </div>
 </template>
@@ -58,7 +60,7 @@ const visibleList = ref(true)
 
 <style scoped>
 .jobopenings {
-  min-height: calc(100vh - 72px);
+  min-height: calc(100vh - 73px);
 }
 
 .info::after {

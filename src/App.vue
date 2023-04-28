@@ -7,6 +7,6 @@
 
 <style lang="scss" scoped>
   .app-container{
-    min-height: calc(100vh - 72px);
+    min-height: calc(100vh - 73px);
   }
 </style>
