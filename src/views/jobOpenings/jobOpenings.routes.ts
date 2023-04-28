@@ -14,7 +14,7 @@ export const jobOpeningsRoutes: RouteRecordRaw[] = [
       {
         path: ':jobOpenigId/:title',
         name: jobOpeningsRouteNames.jobOpeningInfo,
-        component: () => import('@/views/jobOpenings/components/JobOpeningInfo.vue'),
+        component: () => import('@/views/jobOpenings/JobOpeningInfo.vue'),
         props: (router: any) => ({ ...router.params, jobOpeningId: router.params.jobOpenigId }),
         meta: { transition: 'slide' }
       }

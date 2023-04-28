@@ -1,14 +1,15 @@
 <template>
-  <ul v-if="jobOpeningsMap" class="list list-disc list-inside pl-2">
+  <ul v-if="jobOpeningsIdValMap" class="list list-disc list-inside pl-2">
     <li
       v-for="jobOpId in firstFiveItemsArr" :key="jobOpId"
       class="truncate text-lightBlue-500"
     >
       <RouterLink
-        :to="{name: $routeNames.jobOpeningInfo, params: {jobOpenigId: jobOpId, title: jobOpeningsMap[jobOpId].title}}"
+        :to="{name: $routeNames.jobOpeningInfo,
+              params: {jobOpenigId: jobOpId, title: jobOpeningsIdValMap[jobOpId].title}}"
         class="hover:underline"
       >
-        {{ jobOpeningsMap[jobOpId].title }}
+        {{ jobOpeningsIdValMap[jobOpId].title }}
       </RouterLink>
     </li>
     <div class="text-lightBlue-600">
@@ -25,7 +26,13 @@ const props = defineProps<{
 }>()
 
 const jobOpeningStore = useJobOpeningsStore()
-const { jobOpeningsMap } = storeToRefs(jobOpeningStore)
+const { jobOpenings } = storeToRefs(jobOpeningStore)
+
+const jobOpeningsIdValMap = computed(() => {
+  if (jobOpenings.value) {
+    return jobOpeningsService.createJobOpeningsIdValueMap(jobOpenings.value)
+  }
+})
 
 const showAll = ref(false)
 

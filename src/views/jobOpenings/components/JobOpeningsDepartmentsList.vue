@@ -8,38 +8,43 @@
     </h4>
   </div>
 
-  <ul v-if="departmentOpenings" v-show="visible" class="mt-1">
+  <ul v-if="departmentsJobOpenings" v-show="visible" class="mt-1">
     <li
-      v-for="depName in departmentNames"
+      v-for="depName in shownDepartments"
       :key="depName"
       class="text-xs font-semibold"
     >
-      {{ depName }} ({{ departmentOpenings[depName].length }})
-      <JobOpeningsVacancyList :vacancyIdArray="departmentOpenings[depName] " />
+      {{ depName }} ({{ departmentsJobOpenings[depName].length }})
+      <JobOpeningsVacancyList :vacancyIdArray="departmentsJobOpenings[depName] " />
     </li>
   </ul>
 </template>
 
 <script setup lang="ts">
 const jobOpeningsStore = useJobOpeningsStore()
-const { departmentOpenings, selectedDepartments } = storeToRefs(jobOpeningsStore)
+const { jobOpenings, departments, selectedDepartments } = storeToRefs(jobOpeningsStore)
+
 defineProps<{visible: boolean}>()
 
+const departmentsJobOpenings = computed(() => {
+  if (jobOpenings.value && departments.value) {
+    return jobOpeningsService.createDepartmentsOpenings(jobOpenings.value, departments.value)
+  }
+})
+
 const totalOpeningsNumber = computed(() => {
-  if (departmentOpenings.value) {
-    return Object.values(departmentOpenings.value).reduce((total, el) => {
+  if (departmentsJobOpenings.value) {
+    return Object.values(departmentsJobOpenings.value).reduce((total, el) => {
       total += el.length
       return total
     }, 0)
-  } else {
-    return null
   }
 })
 
 const checkedOpeningsNumber = computed(() => {
   return selectedDepartments.value.reduce((sum, dep) => {
-    if (departmentOpenings.value) {
-      sum = sum += departmentOpenings.value[dep].length
+    if (departmentsJobOpenings.value) {
+      sum = sum += departmentsJobOpenings.value[dep].length
       return sum
     } else {
       return sum
@@ -47,9 +52,9 @@ const checkedOpeningsNumber = computed(() => {
   }, 0)
 })
 
-const departmentNames = computed(() => {
-  if (departmentOpenings.value) {
-    return Object.keys(departmentOpenings.value)
+const shownDepartments = computed(() => {
+  if (departmentsJobOpenings.value) {
+    return Object.keys(departmentsJobOpenings.value)
       .sort((a, b) => a.localeCompare(b))
       .filter(dep => (selectedDepartments.value.length > 0 ? selectedDepartments.value.includes(dep) : true))
   } else {

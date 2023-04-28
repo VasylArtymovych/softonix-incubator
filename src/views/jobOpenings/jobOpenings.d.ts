@@ -15,7 +15,7 @@ interface IDepartmentOpenings {
   [key: string]: string[]
 }
 
-interface IDepartmentNamesMap {
+interface IDepartmentsNameValueMap {
   [key: string]: string
 }
 

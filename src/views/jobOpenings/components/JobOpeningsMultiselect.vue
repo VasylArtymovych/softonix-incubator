@@ -4,20 +4,20 @@
     <!--Select-->
     <div
       ref="multiSelectRef"
-      class="relative flex grow-0 items-center flex-wrap gap-1 w-full min-h-[36px] border border-gray-medium p-1
-      pr-4 rounded hover:border-lightBlue-400 cursor-pointer"
+      class="relative flex grow-0 items-center flex-wrap gap-1 w-full min-h-[36px] border
+      border-gray-medium p-1 pr-4 rounded hover:border-lightBlue-400 cursor-pointer"
       @click="focused = !focused"
     >
       <!--Selected options-->
       <div
         v-for="(dep, i) in selectedDepartments" :key="dep"
-        class="first:w-[18%] w-[10%] p-1 flex gap-[2px] flex-grow-0 items-center text-xs font-semibold
-        text-blue-500 bg-blue-100 rounded"
+        class="first:w-[18%] w-[10%] p-1 flex gap-[2px] flex-grow-0 items-center text-xs
+        font-semibold text-blue-500 bg-blue-100 rounded"
         @click.stop
       >
         <p class="truncate p-0 m-0">{{ dep }}</p>
         <span
-          class="relative bottom-1 text-[20px] text-blue-800 hover:text-red-500 cursor-pointer "
+          class="relative bottom-1 text-[20px] text-blue-800 hover:text-red-500 cursor-pointer"
           @click="handleDelete(i)"
         >
           &times;
@@ -39,23 +39,24 @@
         @click.stop
       >
         <li
-          v-for="dep in conectedDepartments" :key="dep"
+          v-for="depName in conectedDepartmentNames" :key="depName"
           class="input-container block relative hover:bg-slate-200 select-none"
           @click.stop="handleChaeckbox"
         >
           <input
-            :id="dep"
+            :id="depName"
             v-model="selectedDepartments"
             type="checkbox"
-            :value="dep"
+            :value="depName"
             class="checkbox absolute opacity-0 w-0 h-0 peer"
           >
           <label
-            :for="dep"
+            :for="depName"
             class="label block w-full py-2 px-4 rounded peer-checked:bg-blue-100 peer-checked:text-black cursor-pointer"
           >
-            {{ dep }}
+            {{ depName }}
           </label>
+
           <span class="hidden absolute top-2 right-4 text-base peer-checked:block text-gray">&#10003;</span>
         </li>
       </ul>
@@ -65,15 +66,21 @@
 
 <script setup lang="ts">
 const jobOpeningsStore = useJobOpeningsStore()
-const { selectedDepartments, departmentOpenings } = storeToRefs(jobOpeningsStore)
+const { selectedDepartments, departments, jobOpenings } = storeToRefs(jobOpeningsStore)
 
 const multiSelectRef = ref()
 const topPosition = ref('38px')
 const focused = ref(false)
 
-const conectedDepartments = computed(() => {
-  if (departmentOpenings.value) {
-    return Object.keys(departmentOpenings.value).sort((d1, d2) => d1.localeCompare(d2))
+const departmentsJobOpenings = computed(() => {
+  if (jobOpenings.value && departments.value) {
+    return jobOpeningsService.createDepartmentsOpenings(jobOpenings.value, departments.value)
+  }
+})
+
+const conectedDepartmentNames = computed(() => {
+  if (departmentsJobOpenings.value) {
+    return Object.keys(departmentsJobOpenings.value).sort((d1, d2) => d1.localeCompare(d2))
   } else {
     return []
   }
@@ -91,8 +98,6 @@ const handleDelete = (i: number) => {
   selectedDepartments.value.splice(i, 1)
   setTimeout(fixTopPosition, 100)
 }
-
-defineExpose()
 </script>
 
 <style lang="scss" scoped>

@@ -18,17 +18,17 @@ class JobOpeningsService {
     })
   }
 
-  createDepartmentOpenings (jobOpen: IJobOpening[] = [], departs: IDepartment[]) {
-    const departmentNamesMap = this.createDepartmentNamesMap(departs)
+  createDepartmentsOpenings (jobOpenings: IJobOpening[] = [], departments: IDepartment[] = []) {
+    const depsNameValueMap = this.createDepartmentsNameValueMap(departments)
 
-    return jobOpen.reduce((acc: IDepartmentOpenings, j: IJobOpening) => {
+    return jobOpenings.reduce((acc: IDepartmentOpenings, j: IJobOpening) => {
       if (j.departments.length <= 0) {
         acc.Other ? acc.Other.push(j.id) : acc.Other = [j.id]
       }
 
       j.departments.forEach((d: string) => {
-        if (departmentNamesMap[d]) {
-          acc[departmentNamesMap[d]] ? acc[departmentNamesMap[d]].push(j.id) : acc[departmentNamesMap[d]] = [j.id]
+        if (depsNameValueMap[d]) {
+          acc[depsNameValueMap[d]] ? acc[depsNameValueMap[d]].push(j.id) : acc[depsNameValueMap[d]] = [j.id]
         }
       })
 
@@ -36,15 +36,15 @@ class JobOpeningsService {
     }, {})
   }
 
-  createDepartmentNamesMap (departments: IDepartment[] = []): IDepartmentNamesMap {
-    const hashMap: IDepartmentNamesMap = {}
+  createDepartmentsNameValueMap (departments: IDepartment[] = []): IDepartmentsNameValueMap {
+    const hashMap: IDepartmentsNameValueMap = {}
 
     departments.forEach(d => (hashMap[d.value] = d.name))
 
     return hashMap
   }
 
-  createJobOpeningsMap (jobOpenings: IJobOpening[]) {
+  createJobOpeningsIdValueMap (jobOpenings: IJobOpening[]) {
     const jobOpeningsMap: IJobOpeningsMap = {}
 
     jobOpenings.forEach(jobOp => {
