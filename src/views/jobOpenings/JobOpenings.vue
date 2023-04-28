@@ -60,17 +60,30 @@ const visibleList = ref(true)
   min-height: calc(100vh - 72px);
 }
 
-.slide-enter-active,
-.slide-leave-active {
+.nested-enter-active,
+.nested-leave-active {
 transition: all 0.3s ease-in-out;
 }
-.slide-leave-active {
+.nested-leave-active {
   transition-delay: 0.25s;
 }
-.slide-enter-from,
-.slide-leave-to {
+.nested-enter-from,
+.nested-leave-to {
   transform: translateY(30px);
   opacity: 0;
+}
+
+.nested-enter-active :deep(.inner),
+.nested-leave-active :deep(.inner){
+  transition: all 0.3s ease-in-out;
+}
+.nested-enter-active :deep(.inner) {
+transition-delay: 0.25s;
+}
+.nested-enter-from :deep(.inner),
+.nested-leave-to :deep(.inner) {
+  transform: translateX(30px);
+  opacity: 0.001;
 }
 
 .fade-enter-active,
@@ -81,5 +94,4 @@ transition: all 0.3s ease-in-out;
 .fade-leave-to {
   opacity: 0;
 }
-
 </style>
