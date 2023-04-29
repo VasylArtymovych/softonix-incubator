@@ -22,19 +22,16 @@
 
 <script setup lang="ts">
 const jobOpeningsStore = useJobOpeningsStore()
-const { jobOpenings, departments, selectedDepartments } = storeToRefs(jobOpeningsStore)
+const { selectedDepartments } = storeToRefs(jobOpeningsStore)
 
-defineProps<{visible: boolean}>()
-
-const departmentsJobOpenings = computed(() => {
-  if (jobOpenings.value && departments.value) {
-    return jobOpeningsService.createDepartmentsOpenings(jobOpenings.value, departments.value)
-  }
-})
+const props = defineProps<{
+  visible: boolean
+  departmentsJobOpenings: IDepartmentOpenings | undefined
+}>()
 
 const totalOpeningsNumber = computed(() => {
-  if (departmentsJobOpenings.value) {
-    return Object.values(departmentsJobOpenings.value).reduce((total, el) => {
+  if (props.departmentsJobOpenings) {
+    return Object.values(props.departmentsJobOpenings).reduce((total, el) => {
       total += el.length
       return total
     }, 0)
@@ -43,8 +40,8 @@ const totalOpeningsNumber = computed(() => {
 
 const checkedOpeningsNumber = computed(() => {
   return selectedDepartments.value.reduce((sum, dep) => {
-    if (departmentsJobOpenings.value) {
-      sum = sum += departmentsJobOpenings.value[dep].length
+    if (props.departmentsJobOpenings) {
+      sum = sum += props.departmentsJobOpenings[dep].length
       return sum
     } else {
       return sum
@@ -53,17 +50,12 @@ const checkedOpeningsNumber = computed(() => {
 })
 
 const shownDepartments = computed(() => {
-  if (departmentsJobOpenings.value) {
-    return Object.keys(departmentsJobOpenings.value)
+  if (props.departmentsJobOpenings) {
+    return Object.keys(props.departmentsJobOpenings)
       .sort((a, b) => a.localeCompare(b))
       .filter(dep => (selectedDepartments.value.length > 0 ? selectedDepartments.value.includes(dep) : true))
   } else {
     return null
   }
 })
-
 </script>
-
-<style scoped>
-
-</style>

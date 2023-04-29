@@ -68,22 +68,20 @@
 <script setup lang="ts">
 import type { ObjectDirective, DirectiveBinding } from 'vue'
 
+const props = defineProps<{
+  departmentsJobOpenings: IDepartmentOpenings | undefined
+}>()
+
 const jobOpeningsStore = useJobOpeningsStore()
-const { selectedDepartments, departments, jobOpenings } = storeToRefs(jobOpeningsStore)
+const { selectedDepartments } = storeToRefs(jobOpeningsStore)
 
 const multiSelectRef = ref()
 const topPosition = ref('38px')
 const focused = ref(false)
 
-const departmentsJobOpenings = computed(() => {
-  if (jobOpenings.value && departments.value) {
-    return jobOpeningsService.createDepartmentsOpenings(jobOpenings.value, departments.value)
-  }
-})
-
 const conectedDepartmentNames = computed(() => {
-  if (departmentsJobOpenings.value) {
-    return Object.keys(departmentsJobOpenings.value).sort((d1, d2) => d1.localeCompare(d2))
+  if (props.departmentsJobOpenings) {
+    return Object.keys(props.departmentsJobOpenings).sort((d1, d2) => d1.localeCompare(d2))
   } else {
     return []
   }

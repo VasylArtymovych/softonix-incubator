@@ -27,8 +27,8 @@
           </div>
 
           <div v-else>
-            <JobOpeningsMultiselect />
-            <JobOpeningsDepartmentsList :visible="visibleList" />
+            <JobOpeningsMultiselect :departmentsJobOpenings="departmentsJobOpenings" />
+            <JobOpeningsDepartmentsList :departmentsJobOpenings="departmentsJobOpenings" :visible="visibleList" />
           </div>
         </div>
         <button class="w-fill bg-blue-100 text-xs font-semibold text-blue-500" @click="visibleList = !visibleList">
@@ -53,9 +53,16 @@
 
 <script setup lang="ts">
 const jobOpeningsStore = useJobOpeningsStore()
-const { loading, error } = storeToRefs(jobOpeningsStore)
+const { jobOpenings, departments, loading, error } = storeToRefs(jobOpeningsStore)
 
 const visibleList = ref(true)
+
+const departmentsJobOpenings = computed(() => {
+  if (jobOpenings.value && departments.value) {
+    return jobOpeningsService.createDepartmentsOpenings(jobOpenings.value, departments.value)
+  }
+})
+
 </script>
 
 <style scoped>
