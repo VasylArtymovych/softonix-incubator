@@ -6,7 +6,7 @@
     >
       <RouterLink
         :to="{name: $routeNames.jobOpeningInfo,
-              params: {jobOpenigId: jobOpId, title: jobOpeningsIdValMap[jobOpId].title}}"
+              params: {jobOpenigId: jobOpId, title: jobOpeningsIdValMap[jobOpId].title.replace(/[\s./]/g, '_')}}"
         class="hover:underline"
       >
         {{ jobOpeningsIdValMap[jobOpId].title }}
