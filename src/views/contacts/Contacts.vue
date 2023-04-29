@@ -2,7 +2,7 @@
   <div class="flex items-center gap-4">
     <h3 class="font-medium m-0">Contact list</h3>
 
-    <el-button :type="$elComponentType.primary" @click="createNewContact">
+    <el-button :type="$elComponentType.primary" class="" @click="createNewContact">
       <template #icon>
         <IconPlus class="w-5 h-5" />
       </template>

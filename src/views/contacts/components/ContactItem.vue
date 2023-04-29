@@ -1,15 +1,21 @@
 <template>
-  <Card>
-    <div class="flex">
+  <el-card :body-style="{padding: '0px'}" class="rounded-md">
+    <div class="flex p-4 pb-0">
       <div class="flex-grow text-sm truncate" @click.stop>
         <template v-if="editMode">
-          <input
-            ref="inputRef"
-            v-model="localContact.name"
-            type="text"
-            class="block font-medium w-full"
-          >
-          <input v-model="localContact.description" type="text" class="block mt-1 text-gray w-full">
+          <div class="flex flex-wrap gap-[2px]">
+            <el-input
+              ref="inputRef"
+              v-model="localContact.name"
+              clearable
+              :size="$elComponentSize.small"
+            />
+            <el-input
+              v-model="localContact.description"
+              clearable
+              :size="$elComponentSize.small"
+            />
+          </div>
         </template>
 
         <template v-else>
@@ -41,48 +47,58 @@
       </div>
     </div>
 
-    <div class="flex justify-end mt-2 gap-2">
+    <div class="flex justify-end mt-2 px-4 gap-2">
       <template v-if="editMode">
-        <span
-          class="text-blue-500 font-medium text-xs cursor-pointer hover:underline"
+        <el-button
+          link :type="$elComponentType.danger"
+          class="font-medium text-xs cursor-pointer hover:underline"
           @click.stop="editMode = false"
-        >Cancel</span>
+        >
+          Cancel
+        </el-button>
 
-        <span
-          class="text-blue-500 font-medium text-xs cursor-pointer hover:underline"
+        <el-button
+          link :type="$elComponentType.primary"
+          class="font-medium text-xs cursor-pointer hover:underline"
           @click.stop="onSave"
-        >Save</span>
+        >
+          Save
+        </el-button>
       </template>
 
       <template v-else>
-        <span
-          class="text-blue-500 font-medium text-xs cursor-pointer hover:underline"
+        <el-button
+          link :type="$elComponentType.primary"
+          class="font-medium text-xs cursor-pointer hover:underline"
           @click.stop="triggerEditMode"
-        >Edit</span>
+        >
+          Edit
+        </el-button>
 
-        <span
-          class="text-red-500 font-medium text-xs cursor-pointer hover:underline"
+        <el-button
+          link :type="$elComponentType.danger"
+          class="font-medium text-xs cursor-pointer hover:underline"
           @click.stop="$emit('delete', contact)"
-        >Delete</span>
+        >
+          Delete
+        </el-button>
       </template>
     </div>
 
-    <template #footer>
-      <div class="flex text-sm font-medium text-gray-dark border-t border-gray-ultra-light" @click.stop>
-        <div class="flex items-center justify-center flex-1 py-4 cursor-pointer hover:text-gray">
-          <IconEnvelope />
-          <span class="ml-3">Email</span>
-        </div>
-        <div
-          class="flex items-center justify-center flex-1 py-4 border-l
-            border-gray-ultra-light cursor-pointer hover:text-gray"
-        >
-          <IconPhone />
-          <span class="ml-3">Call</span>
-        </div>
-      </div>
-    </template>
-  </Card>
+    <div class="flex text-sm font-medium text-gray border-t border-gray-ultra-light" @click.stop>
+      <el-button class="w-[50%] h-[52px] border-0 rounded-none peer text-inherit">
+        <template #icon> <IconEnvelope class="peer-hover:fill-blue-500" /></template>
+        Email
+      </el-button>
+      <el-button
+        class="w-[50%] h-[52px] border-0 border-l rounded-none border-gray-ultra-light
+      hover:border-gray-ultra-light text-inherit"
+      >
+        <template #icon><IconPhone /></template>
+        Call
+      </el-button>
+    </div>
+  </el-card>
 </template>
 
 <script lang="ts" setup>
@@ -125,3 +141,9 @@ function onSave () {
 
 const imageHasError = ref(false)
 </script>
+
+<style lang="scss" scoped>
+.el-button + .el-button {
+  margin-left: 0;
+}
+</style>
