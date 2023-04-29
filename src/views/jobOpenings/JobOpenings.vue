@@ -93,7 +93,10 @@ transition: all 0.3s ease-in-out;
 .nested-leave-active {
   transition-delay: 0.25s;
 }
-.nested-enter-from,
+.nested-enter-from {
+  transform: translateY(-30px);
+  opacity: 0;
+}
 .nested-leave-to {
   transform: translateY(30px);
   opacity: 0;
@@ -106,7 +109,10 @@ transition: all 0.3s ease-in-out;
 .nested-enter-active :deep(.inner) {
 transition-delay: 0.25s;
 }
-.nested-enter-from :deep(.inner),
+.nested-enter-from :deep(.inner){
+  transform: translateX(-30px);
+  opacity: 0.001;
+}
 .nested-leave-to :deep(.inner) {
   transform: translateX(30px);
   opacity: 0.001;
