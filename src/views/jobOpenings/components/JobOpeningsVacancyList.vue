@@ -6,7 +6,7 @@
     >
       <RouterLink
         :to="{name: $routeNames.jobOpeningInfo,
-              params: {jobOpenigId: jobOpId, title: jobOpeningsIdValMap[jobOpId].title.replace(/[\s./]/g, '_')}}"
+              params: {jobOpenigId: jobOpId, title: replaceSpacesAndSlashes(jobOpId)}}"
         class="hover:underline"
       >
         {{ jobOpeningsIdValMap[jobOpId].title }}
@@ -43,6 +43,8 @@ const firstFiveItemsArr = computed(() => {
     return props.vacancyIdArray
   }
 })
+
+const replaceSpacesAndSlashes = (id: string) => jobOpeningsIdValMap.value![id].title.replace(/[\s./]/g, '_')
 </script>
 
 <style lang="scss" scoped>
