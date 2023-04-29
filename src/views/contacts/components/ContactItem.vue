@@ -26,25 +26,13 @@
         </template>
       </div>
 
-      <div
-        class="flex items-center justify-center w-[40px] h-[40px] ml-2 rounded-full shrink-0 overflow-hidden
-      border border-gray-medium bg-gray-ultra-light"
+      <el-avatar
+        :src="contact.image"
+        alt="contact-logo"
+        class="ml-2 shrink-0 text-base uppercase"
       >
-        <span
-          v-if="imageHasError || !contact.image"
-          class="font-medium uppercase"
-        >{{ nameAbbrv }}
-        </span>
-
-        <img
-          v-else
-          class="object-cover"
-          :src="contact.image"
-          alt="contact-logo"
-          @error="imageHasError = true"
-          @load="imageHasError = false"
-        >
-      </div>
+        {{ nameAbbrv }}
+      </el-avatar>
     </div>
 
     <div class="flex justify-end mt-2 px-4 gap-2">
@@ -139,7 +127,6 @@ function onSave () {
   editMode.value = false
 }
 
-const imageHasError = ref(false)
 </script>
 
 <style lang="scss" scoped>
