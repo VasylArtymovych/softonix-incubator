@@ -1,34 +1,36 @@
 <template>
   <div class="flex justify-center">
-    <Card :title="cardTitle" class="w-[350px]">
+    <el-card class="w-[350px]">
+      <template #header>
+        <h2 class="font-semibold">{{ cardTitle }}</h2>
+      </template>
+
       <div class="space-y-4">
-        <AppInput v-model.trim="contactForm.name" placeholder="Name" />
-
-        <AppInput v-model.trim="contactForm.description" placeholder="Description" />
-
-        <AppInput v-model.trim="contactForm.image" placeholder="Image Link" />
+        <el-input v-model="contactForm.name" placeholder="Name" clearable autofocus />
+        <el-input
+          v-model="contactForm.description"
+          :min="10"
+          placeholder="Please input"
+          clearable
+        />
+        <el-input v-model.trim="contactForm.image" placeholder="Image Link" />
       </div>
 
-      <template #footer>
-        <div class="px-6 pb-6 mt-2 flex gap-3">
-          <AppButton class="flex-auto" @click="$router.back">
-            Cancel
-          </AppButton>
-
-          <AppButton v-if="currentContact" class="flex-auto" @click="onDelete">
-            Delete
-          </AppButton>
-
-          <AppButton class="flex-auto" :disabled="!isFormValid" @click="onSave">
-            <template #icon>
-              <IconPlus class="w-5 h-5" />
-            </template>
-
-            Save
-          </AppButton>
-        </div>
-      </template>
-    </Card>
+      <div class="mt-4 flex">
+        <el-button :type="$elComponentType.primary" class="flex-auto" @click="$router.back">
+          Cancel
+        </el-button>
+        <el-button v-if="currentContact" :type="$elComponentType.primary" class="flex-auto" @click="onDelete">
+          Delete
+        </el-button>
+        <el-button :type="$elComponentType.primary" class="flex-auto" :disabled="!isFormValid" @click="onSave">
+          <template #icon>
+            <IconPlus class="w-5 h-5" />
+          </template>
+          Save
+        </el-button>
+      </div>
+    </el-card>
   </div>
 </template>
 
