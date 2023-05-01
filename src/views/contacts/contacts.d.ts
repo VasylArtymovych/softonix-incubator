@@ -4,3 +4,5 @@ interface IContact {
   description: string
   image?: string
 }
+
+type TActiveTab = 'first' | 'second'
