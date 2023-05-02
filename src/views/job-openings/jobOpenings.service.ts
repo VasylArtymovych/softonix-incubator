@@ -5,17 +5,13 @@ class JobOpeningsService {
   async fetchJobOpenings (): Promise<IJobOpening[]> {
     await this.timer()
 
-    return new Promise((resolve) => {
-      resolve(jobOpenings)
-    })
+    return jobOpenings
   }
 
   async fetchDepartments (): Promise<IDepartment[]> {
     await this.timer()
 
-    return new Promise((resolve) => {
-      resolve(departments)
-    })
+    return departments
   }
 
   createDepartmentsOpenings (jobOpenings: IJobOpening[] = [], departments: IDepartment[] = []) {
