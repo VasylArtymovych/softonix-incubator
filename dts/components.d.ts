@@ -32,5 +32,6 @@ declare module '@vue/runtime-core' {
     IconPlus: typeof import('./../src/components/icons/IconPlus.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SectionTitleAndBtns: typeof import('./../src/views/contacts/components/SectionTitleAndBtns.vue')['default']
   }
 }

@@ -31,7 +31,7 @@
         alt="contact-logo"
         class="ml-2 shrink-0 text-base uppercase"
       >
-        {{ nameAbbrv }}
+        {{ createAbbreviation(contact.name) }}
       </el-avatar>
     </div>
 
@@ -90,6 +90,8 @@
 </template>
 
 <script lang="ts" setup>
+import { createAbbreviation } from '../contacts.helpers'
+
 const props = defineProps<{
   contact: IContact
 }>()
@@ -102,15 +104,6 @@ const localContact = ref<Omit<IContact, 'id'>>({
   name: '',
   description: '',
   image: ''
-})
-
-const nameAbbrv = computed(() => {
-  return props.contact.name.split(' ').reduce((acc, cur) => {
-    if (acc.length < 2) {
-      acc = acc.concat(cur[0])
-    }
-    return acc
-  }, '')
 })
 
 const editMode = ref(false)
