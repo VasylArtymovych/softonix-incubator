@@ -5,10 +5,10 @@
     <div class="inner p-3 bg-blue-200">
       <h2 class="text-xl font-bold text-center">
         <span class="text-lg text-gray italic">Job opening:</span>
-        {{ jobOpeningsIdValMap[jobOpenigId].title }}
+        {{ jobOpeningsIdValMap[jobOpeningId].title }}
       </h2>
       <a
-        :href="jobOpeningsIdValMap[jobOpenigId].url"
+        :href="jobOpeningsIdValMap[jobOpeningId].url"
         target="_blank"
         class="block mt-6 font-semibold text-center text-blue-500 hover:underline"
       >
@@ -16,14 +16,14 @@
       </a>
       <p class="mt-6 font-bold text-center text-ld">
         <span class="font-medium text-base text-gray">Is vacancy already closed:</span>
-        {{ jobOpeningsIdValMap[jobOpenigId].isClosed ? 'Yes' : 'No' }}
+        {{ jobOpeningsIdValMap[jobOpeningId].isClosed ? 'Yes' : 'No' }}
       </p>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-defineProps<{jobOpenigId: string}>()
+defineProps<{jobOpeningId: string}>()
 
 const jobOpeningsStore = useJobOpeningsStore()
 const { jobOpenings, loading, error } = storeToRefs(jobOpeningsStore)

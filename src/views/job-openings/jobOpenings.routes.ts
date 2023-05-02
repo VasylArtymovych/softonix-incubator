@@ -12,10 +12,10 @@ export const jobOpeningsRoutes: RouteRecordRaw[] = [
     component: () => import('./JobOpenings.vue'),
     children: [
       {
-        path: ':jobOpenigId/:title',
+        path: ':jobOpeningId/:title',
         name: jobOpeningsRouteNames.jobOpeningInfo,
-        component: () => import('@/views/jobOpenings/JobOpeningInfo.vue'),
-        props: (router: any) => ({ ...router.params, jobOpeningId: router.params.jobOpenigId }),
+        component: () => import('@/views/job-openings/JobOpeningInfo.vue'),
+        props: (router) => ({ ...router.params, jobOpeningId: router.params.jobOpeningId }),
         meta: { transition: 'nested' }
       }
     ]

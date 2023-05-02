@@ -1,7 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 
 import { contactRouteNames, contactsRoutes } from '@/views/contacts/contacts.routes'
-import { jobOpeningsRoutes } from '@/views/jobOpenings/jobOpenings.routes'
+import { jobOpeningsRoutes } from '@/views/job-openings/jobOpenings.routes'
 
 export const routes: RouteRecordRaw[] = [
   {

@@ -53,7 +53,7 @@ const shownDepartments = computed(() => {
   if (props.departmentsJobOpenings) {
     return Object.keys(props.departmentsJobOpenings)
       .sort((a, b) => a.localeCompare(b))
-      .filter(dep => (selectedDepartments.value.length > 0 ? selectedDepartments.value.includes(dep) : true))
+      .filter(dep => (selectedDepartments.value.length ? selectedDepartments.value.includes(dep) : true))
   } else {
     return null
   }

@@ -25,10 +25,12 @@
         </span>
       </div>
 
-      <!--Select arrows -->
-      <div class="absolute top-1/2 right-1 translate-y-[-12px] text-gray-medium">
-        <span v-show="!focused">&#10095;</span>
-        <span v-show="focused">&#9650;</span>
+      <!--Select arrow-->
+      <div
+        class="absolute top-1/2 right-1 translate-y-[-12px] text-gray-medium 'rotate-90'"
+        :class="{'-rotate-90': focused}"
+      >
+        <span>&#10095;</span>
       </div>
 
       <!--Select options list -->
@@ -42,7 +44,7 @@
         <li
           v-for="depName in conectedDepartmentNames" :key="depName"
           class="input-container block relative hover:bg-slate-200 select-none"
-          @click.stop="handleChaeckbox"
+          @click.stop="handleCheckbox"
         >
           <input
             :id="depName"
@@ -91,7 +93,7 @@ const fixTopPosition = () => {
   topPosition.value = multiSelectRef.value.clientHeight + 4 + 'px'
 }
 
-const handleChaeckbox = () => {
+const handleCheckbox = () => {
   setTimeout(fixTopPosition, 100)
 }
 
