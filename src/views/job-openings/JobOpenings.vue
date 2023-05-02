@@ -26,7 +26,7 @@
             <h2>{{ error }}</h2>
           </div>
 
-          <div v-else>
+          <div v-else-if="departmentsJobOpenings">
             <JobOpeningsMultiselect :departmentsJobOpenings="departmentsJobOpenings" />
             <JobOpeningsDepartmentsList :departmentsJobOpenings="departmentsJobOpenings" :visible="visibleList" />
           </div>

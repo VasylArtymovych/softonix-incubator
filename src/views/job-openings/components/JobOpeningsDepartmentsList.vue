@@ -8,7 +8,7 @@
     </h4>
   </div>
 
-  <ul v-if="departmentsJobOpenings" v-show="visible" class="mt-1">
+  <ul v-show="visible" class="mt-1">
     <li
       v-for="depName in shownDepartments"
       :key="depName"
@@ -26,36 +26,26 @@ const { selectedDepartments } = storeToRefs(jobOpeningsStore)
 
 const props = defineProps<{
   visible: boolean
-  departmentsJobOpenings: IDepartmentOpenings | undefined
+  departmentsJobOpenings: IDepartmentOpenings
 }>()
 
-const totalOpeningsNumber = computed(() => {
-  if (props.departmentsJobOpenings) {
-    return Object.values(props.departmentsJobOpenings).reduce((total, el) => {
-      total += el.length
-      return total
-    }, 0)
-  }
-})
+const totalOpeningsNumber = computed(() => Object.values(props.departmentsJobOpenings)
+  .reduce((total, jobArr) => {
+    total += jobArr.length
+    return total
+  }, 0)
+)
 
 const checkedOpeningsNumber = computed(() => {
-  return selectedDepartments.value.reduce((sum, dep) => {
-    if (props.departmentsJobOpenings) {
-      sum = sum += props.departmentsJobOpenings[dep].length
-      return sum
-    } else {
-      return sum
-    }
+  return selectedDepartments.value.reduce((sum, depName) => {
+    sum += props.departmentsJobOpenings[depName].length
+    return sum
   }, 0)
 })
 
-const shownDepartments = computed(() => {
-  if (props.departmentsJobOpenings) {
-    return Object.keys(props.departmentsJobOpenings)
-      .sort((a, b) => a.localeCompare(b))
-      .filter(dep => (selectedDepartments.value.length ? selectedDepartments.value.includes(dep) : true))
-  } else {
-    return null
-  }
-})
+const shownDepartments = computed(() => Object.keys(props.departmentsJobOpenings)
+  .sort((a, b) => a.localeCompare(b))
+  .filter(dep => (selectedDepartments.value.length ? selectedDepartments.value.includes(dep) : true))
+
+)
 </script>

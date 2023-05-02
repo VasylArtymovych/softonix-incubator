@@ -71,7 +71,7 @@
 import type { ObjectDirective, DirectiveBinding } from 'vue'
 
 const props = defineProps<{
-  departmentsJobOpenings: IDepartmentOpenings | undefined
+  departmentsJobOpenings: IDepartmentOpenings
 }>()
 
 const jobOpeningsStore = useJobOpeningsStore()
@@ -82,11 +82,7 @@ const topPosition = ref('38px')
 const focused = ref(false)
 
 const conectedDepartmentNames = computed(() => {
-  if (props.departmentsJobOpenings) {
-    return Object.keys(props.departmentsJobOpenings).sort((d1, d2) => d1.localeCompare(d2))
-  } else {
-    return []
-  }
+  return Object.keys(props.departmentsJobOpenings).sort((d1, d2) => d1.localeCompare(d2))
 })
 
 const fixTopPosition = () => {

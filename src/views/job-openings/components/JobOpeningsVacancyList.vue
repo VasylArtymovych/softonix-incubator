@@ -1,15 +1,15 @@
 <template>
-  <ul v-if="jobOpeningsIdValMap" class="list list-disc list-inside pl-2">
+  <ul class="list list-disc list-inside pl-2">
     <li
-      v-for="jobOpId in firstFiveItemsArr" :key="jobOpId"
+      v-for="jobOpId in firstFiveItemsArr" :key="jobOpId.id"
       class="truncate text-lightBlue-500"
     >
       <RouterLink
-        :to="{name: $routeNames.jobOpeningInfo,
-              params: {jobOpeningId: jobOpId, title: replaceSpacesAndSlashes(jobOpId)}}"
+        :to="{name: $routeNames.jobOpeningInfo, params: {jobOpeningId:
+          jobOpId.id, title: replaceSpacesAndSlashes(jobOpId.title)}}"
         class="hover:underline"
       >
-        {{ jobOpeningsIdValMap[jobOpId].title }}
+        {{ jobOpId.title }}
       </RouterLink>
     </li>
     <div class="text-lightBlue-600">
@@ -22,17 +22,8 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  vacancyIdArray: string[]
+  vacancyIdArray: IJobOpening[]
 }>()
-
-const jobOpeningStore = useJobOpeningsStore()
-const { jobOpenings } = storeToRefs(jobOpeningStore)
-
-const jobOpeningsIdValMap = computed(() => {
-  if (jobOpenings.value) {
-    return jobOpeningsService.createJobOpeningsIdValueMap(jobOpenings.value)
-  }
-})
 
 const showAll = ref(false)
 
@@ -44,7 +35,7 @@ const firstFiveItemsArr = computed(() => {
   }
 })
 
-const replaceSpacesAndSlashes = (id: string) => jobOpeningsIdValMap.value![id].title.replace(/[\s./]/g, '_')
+const replaceSpacesAndSlashes = (title: string) => title.replace(/[\s./]/g, '_')
 </script>
 
 <style lang="scss" scoped>

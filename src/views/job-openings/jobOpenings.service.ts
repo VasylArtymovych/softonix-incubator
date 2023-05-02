@@ -22,13 +22,13 @@ class JobOpeningsService {
     const depsNameValueMap = this.createDepartmentsNameValueMap(departments)
 
     return jobOpenings.reduce((acc: IDepartmentOpenings, j: IJobOpening) => {
-      if (j.departments.length <= 0) {
-        acc.Other ? acc.Other.push(j.id) : acc.Other = [j.id]
+      if (!j.departments.length) {
+        acc.Other ? acc.Other.push(j) : acc.Other = [j]
       }
 
       j.departments.forEach((d: string) => {
         if (depsNameValueMap[d]) {
-          acc[depsNameValueMap[d]] ? acc[depsNameValueMap[d]].push(j.id) : acc[depsNameValueMap[d]] = [j.id]
+          acc[depsNameValueMap[d]] ? acc[depsNameValueMap[d]].push(j) : acc[depsNameValueMap[d]] = [j]
         }
       })
 

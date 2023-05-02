@@ -12,7 +12,7 @@ interface IDepartment {
 }
 
 interface IDepartmentOpenings {
-  [key: string]: string[]
+  [key: string]: IJobOpening[]
 }
 
 interface IDepartmentsNameValueMap {
