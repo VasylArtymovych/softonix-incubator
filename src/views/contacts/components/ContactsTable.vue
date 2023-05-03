@@ -2,7 +2,6 @@
   <span class="text-xs text-gray">Table border:</span> <el-switch v-model="tableBorder" />
   <el-table
     :data="filteredContacts" stripe style="width: 100%"
-    :default-sort="{ prop: 'name', order: 'ascending' }"
     :border="tableBorder"
     @current-change="editContact"
   >
@@ -25,12 +24,12 @@
         <div v-if="editIdArr.has(row.id)" @click.stop>
           <el-input
             ref="inputRef"
-            v-model="editableContact.name"
+            v-model="editableContacts.get(row.id)!.name"
             clearable
             placeholder="User name"
           />
         </div>
-        <!-- <p v-else>{{ row.name }}</p> -->
+        <p v-else>{{ row.name }}</p>
       </template>
     </el-table-column>
 
@@ -38,7 +37,7 @@
       <template #default="{row}">
         <div v-if="editIdArr.has(row.id)" @click.stop>
           <el-input
-            v-model="editableContact.description"
+            v-model="editableContacts.get(row.id)!.description"
             clearable
             placeholder="User description"
           />
@@ -66,22 +65,23 @@
       <template #header>
         <el-input v-model="searchName" :size="$elComponentSize.small" clearable placeholder="Search by name" />
       </template>
-      <template #default="scope">
-        <template v-if="editIdArr.has(scope.row.id)">
-          <el-button size="small" :type="$elComponentType.danger" @click.stop="handleCancel(scope.row)">
+
+      <template #default="{row}">
+        <template v-if="editIdArr.has(row.id)">
+          <el-button size="small" :type="$elComponentType.danger" @click.stop="handleCancel(row)">
             Cancel
           </el-button>
 
-          <el-button size="small" @click.stop="handleSave(scope.row)">
+          <el-button size="small" @click.stop="handleSave(row)">
             Save
           </el-button>
         </template>
         <template v-else>
-          <el-button size="small" @click.stop="handleEdit(scope.row)">
+          <el-button size="small" @click.stop="handleEdit(row)">
             Edit
           </el-button>
 
-          <el-button size="small" :type="$elComponentType.danger" @click.stop="deleteContact(scope.row)">
+          <el-button size="small" :type="$elComponentType.danger" @click.stop="deleteContact(row)">
             Delete
           </el-button>
         </template>
@@ -102,15 +102,12 @@ const { contacts } = storeToRefs(contactsStore)
 const { updateContact, deleteContact } = contactsStore
 
 const inputRef = ref<HTMLInputElement | null>(null)
-const editIdArr = ref(new Set<number>())
 const searchName = ref('')
 const tableBorder = ref(false)
-const editableContact = ref<IContact>({
-  id: 0,
-  name: '',
-  description: '',
-  image: ''
-})
+
+//* * Used this data structures for multiple edit mode */
+const editIdArr = ref(new Set<number>())
+const editableContacts = ref(new Map<number, IContact>())
 
 const filteredContacts = computed(() => (
   contacts.value.filter(c => !searchName.value ||
@@ -119,7 +116,7 @@ const filteredContacts = computed(() => (
 
 const handleEdit = (row: IContact) => {
   editIdArr.value.add(row.id)
-  editableContact.value = { ...row }
+  editableContacts.value.set(row.id, { ...row })
   nextTick(() => {
     inputRef.value?.focus()
   })
@@ -127,10 +124,12 @@ const handleEdit = (row: IContact) => {
 
 const handleCancel = (row: IContact) => {
   editIdArr.value.delete(row.id)
+  editableContacts.value.delete(row.id)
 }
 
 const handleSave = (row: IContact) => {
-  updateContact(editableContact.value)
+  updateContact(editableContacts.value.get(row.id) as IContact)
   editIdArr.value.delete(row.id)
+  editableContacts.value.delete(row.id)
 }
 </script>
