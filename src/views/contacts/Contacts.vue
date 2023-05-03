@@ -5,7 +5,7 @@
     </el-tab-pane>
 
     <el-tab-pane label="Contacts table" name="second">
-      <SectionTitleAndBtns title="Contacts Table"  class="mb-4"/>
+      <SectionTitleAndBtns title="Contacts Table" class="mb-4" />
 
       <ContactsTable :editContact="editContact" />
     </el-tab-pane>
