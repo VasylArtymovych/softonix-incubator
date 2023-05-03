@@ -1,8 +1,9 @@
 <template>
+  <span class="text-xs text-gray">Table border:</span> <el-switch v-model="tableBorder" />
   <el-table
-    :data="filteredContacts" stripe row-key="id" style="width: 100%"
+    :data="filteredContacts" stripe style="width: 100%"
     :default-sort="{ prop: 'name', order: 'ascending' }"
-    highlight-current-row
+    :border="tableBorder"
     @current-change="editContact"
   >
     <el-table-column type="index" width="30" />
@@ -24,20 +25,20 @@
         <div v-if="editIdArr.has(row.id)" @click.stop>
           <el-input
             ref="inputRef"
-            v-model="row.name"
+            v-model="editableContact.name"
             clearable
             placeholder="User name"
           />
         </div>
-        <p v-else>{{ row.name }}</p>
+        <!-- <p v-else>{{ row.name }}</p> -->
       </template>
     </el-table-column>
 
-    <el-table-column label="Description" prop="description" sortable show-overflow-tooltip width="350">
+    <el-table-column label="Description" prop="description" sortable show-overflow-tooltip>
       <template #default="{row}">
         <div v-if="editIdArr.has(row.id)" @click.stop>
           <el-input
-            v-model="row.description"
+            v-model="editableContact.description"
             clearable
             placeholder="User description"
           />
@@ -103,6 +104,13 @@ const { updateContact, deleteContact } = contactsStore
 const inputRef = ref<HTMLInputElement | null>(null)
 const editIdArr = ref(new Set<number>())
 const searchName = ref('')
+const tableBorder = ref(false)
+const editableContact = ref<IContact>({
+  id: 0,
+  name: '',
+  description: '',
+  image: ''
+})
 
 const filteredContacts = computed(() => (
   contacts.value.filter(c => !searchName.value ||
@@ -111,6 +119,7 @@ const filteredContacts = computed(() => (
 
 const handleEdit = (row: IContact) => {
   editIdArr.value.add(row.id)
+  editableContact.value = { ...row }
   nextTick(() => {
     inputRef.value?.focus()
   })
@@ -121,7 +130,7 @@ const handleCancel = (row: IContact) => {
 }
 
 const handleSave = (row: IContact) => {
-  updateContact(row)
+  updateContact(editableContact.value)
   editIdArr.value.delete(row.id)
 }
 </script>
