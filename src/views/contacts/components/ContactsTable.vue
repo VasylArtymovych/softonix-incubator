@@ -105,7 +105,7 @@ const inputRef = ref<HTMLInputElement | null>(null)
 const searchName = ref('')
 const tableBorder = ref(false)
 
-//* * Used this data structures for multiple edit mode */
+//* * Used this data structures for a multiple edit mode */
 const editIdArr = ref(new Set<number>())
 const editableContacts = ref(new Map<number, IContact>())
 
