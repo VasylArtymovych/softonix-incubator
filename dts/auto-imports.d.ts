@@ -2,6 +2,7 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
+  const ElNotification: typeof import('element-plus/es')['ElNotification']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const authService: typeof import('../src/services/auth.service')['authService']
   const computed: typeof import('vue')['computed']
@@ -70,6 +71,7 @@ declare global {
   const useElFormRef: typeof import('../src/composables/form-config')['useElFormRef']
   const useElFormRules: typeof import('../src/composables/form-config')['useElFormRules']
   const useEmailRule: typeof import('../src/composables/form-config')['useEmailRule']
+  const useErrorNotification: typeof import('../src/composables/el-notification')['useErrorNotification']
   const useGlobalProperties: typeof import('../src/composables/global-properties')['useGlobalProperties']
   const useHttp: typeof import('../src/composables/http/index')['useHttp']
   const useLink: typeof import('vue-router')['useLink']
@@ -79,6 +81,7 @@ declare global {
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
   const useSlots: typeof import('vue')['useSlots']
+  const useSuccessNotification: typeof import('../src/composables/el-notification')['useSuccessNotification']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
   const watchPostEffect: typeof import('vue')['watchPostEffect']

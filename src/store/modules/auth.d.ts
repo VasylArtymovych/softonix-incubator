@@ -4,4 +4,7 @@ interface ILoginRequest {
 }
 
 
-interface IRegisterRequest {}
+interface IRegisterRequest {
+  email: string
+  password: string
+}

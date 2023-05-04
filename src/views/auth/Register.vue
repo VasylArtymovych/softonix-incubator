@@ -29,6 +29,10 @@
 </template>
 
 <script setup lang="ts">
+import { ElNotification } from 'element-plus'
+const router = useRouter()
+const { $routeNames } = useGlobalProperties()
+
 const regFormRef = useElFormRef()
 
 const regForm = useElFormModel({
@@ -44,16 +48,21 @@ const regFormRules = useElFormRules({
 const loading = ref(false)
 
 const submit = () => {
-  regFormRef.value?.validate((valid, fields) => {
+  regFormRef.value?.validate((valid) => {
     if (valid) {
-      console.log('valid', valid)
-    } else {
-      console.log('err', fields)
+      loading.value = true
+
+      authService.register(regForm)
+        .then(() => {
+          ElNotification({
+            title: 'Success',
+            message: 'Confirmation link was sent to your email',
+            type: 'success'
+          })
+          router.push({ name: $routeNames.login })
+        })
+        .finally(() => (loading.value = false))
     }
   })
 }
 </script>
-
-<style scoped>
-
-</style>

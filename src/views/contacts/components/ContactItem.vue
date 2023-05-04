@@ -90,11 +90,10 @@ const props = defineProps<{
   contact: IContact
 }>()
 
-const emit = defineEmits(['delete', 'save'])
-
 const inputRef = ref<HTMLInputElement>()
 
-const localContact = ref<Omit<IContact, 'id'>>({
+const localContact = ref<IContact>({
+  id: 0,
   name: '',
   description: '',
   image: ''
@@ -119,7 +118,7 @@ async function triggerEditMode () {
 }
 
 function onSave () {
-  emit('save', localContact.value)
+  contactsService.updateContact(localContact.value)
   editMode.value = false
 }
 

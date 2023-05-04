@@ -1,6 +1,7 @@
 {
   "globals": {
     "EffectScope": true,
+    "ElNotification": true,
     "acceptHMRUpdate": true,
     "authService": true,
     "computed": true,
@@ -69,6 +70,7 @@
     "useElFormRef": true,
     "useElFormRules": true,
     "useEmailRule": true,
+    "useErrorNotification": true,
     "useGlobalProperties": true,
     "useHttp": true,
     "useLink": true,
@@ -78,6 +80,7 @@
     "useRoute": true,
     "useRouter": true,
     "useSlots": true,
+    "useSuccessNotification": true,
     "watch": true,
     "watchEffect": true,
     "watchPostEffect": true,

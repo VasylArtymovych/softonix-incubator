@@ -25,19 +25,17 @@
       class="cursor-pointer"
       :contact="contact"
       @click="editContact(contact.id)"
-      @delete="deleteContact"
-      @save="updateContact"
     />
   </div>
 </template>
 
 <script lang="ts" setup>
 const { $routeNames } = useGlobalProperties()
-
 const router = useRouter()
 const { logout } = useAuthStore()
+
 const contactsStore = useContactsStore()
-const { getContacts, updateContact, deleteContact } = contactsStore
+const { getContacts } = contactsStore
 const { contacts } = storeToRefs(contactsStore)
 
 function createNewContact () {
