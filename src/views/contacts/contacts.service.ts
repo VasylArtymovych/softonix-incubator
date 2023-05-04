@@ -35,8 +35,16 @@ class ContactsService {
       })
   }
 
-  deleteContact () {
-    return useHttp.post('rest/v1/contacts')
+  deleteContact (contact: IContact) {
+    const { deleteContact } = useContactsStore()
+    return useHttp.delete(`rest/v1/contacts?id=eq.${contact.id}`)
+      .then(() => {
+        deleteContact(contact)
+        useSuccessNotification('Contact successfully deleted')
+      })
+      .catch(error => {
+        useErrorNotification(error.message)
+      })
   }
 }
 

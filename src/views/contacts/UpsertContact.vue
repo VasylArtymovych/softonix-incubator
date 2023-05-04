@@ -33,10 +33,12 @@
 </template>
 
 <script lang="ts" setup>
+import { isContactDataChanged } from './contacts.helper'
+
 const router = useRouter()
 const route = useRoute()
 const { $routeNames } = useGlobalProperties()
-const { contacts, deleteContact } = useContactsStore()
+const { contacts } = useContactsStore()
 
 const currentContact = computed(() => contacts.find(c => c.id === +route.params.contactId))
 
@@ -59,13 +61,15 @@ const isFormValid = computed(() => {
 })
 
 function onDelete () {
-  deleteContact(currentContact.value as IContact)
+  contactsService.deleteContact(currentContact.value as IContact)
   router.replace({ name: $routeNames.contacts })
 }
 
 function onSave () {
   if (currentContact.value) {
-    contactsService.updateContact(contactForm)
+    if (isContactDataChanged(currentContact.value, contactForm)) {
+      contactsService.updateContact(contactForm)
+    }
   } else {
     contactsService.createContact(contactForm)
   }

@@ -1,7 +1,7 @@
 <template>
   <Card>
     <div class="flex">
-      <div class="flex-grow text-sm truncate" @click.stop>
+      <div v-loading="loading" class="flex-grow text-sm truncate" @click.stop>
         <template v-if="editMode">
           <input
             ref="inputRef"
@@ -62,7 +62,7 @@
 
         <span
           class="text-red-500 font-medium text-xs cursor-pointer hover:underline"
-          @click.stop="$emit('delete', contact)"
+          @click.stop="onDelete"
         >Delete</span>
       </template>
     </div>
@@ -86,6 +86,8 @@
 </template>
 
 <script lang="ts" setup>
+import { isContactDataChanged } from '../contacts.helper'
+
 const props = defineProps<{
   contact: IContact
 }>()
@@ -99,16 +101,9 @@ const localContact = ref<IContact>({
   image: ''
 })
 
-const nameAbbrv = computed(() => {
-  return props.contact.name.split(' ').reduce((acc, cur) => {
-    if (acc.length < 2) {
-      acc = acc.concat(cur[0])
-    }
-    return acc
-  }, '')
-})
-
 const editMode = ref(false)
+const loading = ref(false)
+const imageHasError = ref(false)
 
 async function triggerEditMode () {
   editMode.value = true
@@ -118,9 +113,32 @@ async function triggerEditMode () {
 }
 
 function onSave () {
-  contactsService.updateContact(localContact.value)
+  if (isContactDataChanged(localContact.value, props.contact)) {
+    loading.value = true
+    contactsService.updateContact(localContact.value)
+      .finally(() => {
+        editMode.value = false
+        loading.value = false
+      })
+  }
   editMode.value = false
 }
 
-const imageHasError = ref(false)
+function onDelete () {
+  contactsService.deleteContact(props.contact)
+}
+
+// function contactDataChanged () {
+//   return localContact.value.name !== props.contact.name ||
+//   localContact.value.description !== props.contact.description
+// }
+
+const nameAbbrv = computed(() => {
+  return props.contact.name.split(' ').reduce((acc, cur) => {
+    if (acc.length < 2) {
+      acc = acc.concat(cur[0])
+    }
+    return acc
+  }, '')
+})
 </script>

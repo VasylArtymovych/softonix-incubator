@@ -20,16 +20,20 @@
           <el-input v-model="regForm.password" />
         </el-form-item>
 
-        <el-button native-type="submit" :type="$elComponentType.primary">
-          SUBMIT
-        </el-button>
+        <div class="flex justify-between">
+          <el-button native-type="submit" :type="$elComponentType.primary">
+            Sign in
+          </el-button>
+          <el-button link :type="$elComponentType.primary" @click="$router.push({name: $routeNames.login})">
+            Login
+          </el-button>
+        </div>
       </el-form>
     </el-card>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ElNotification } from 'element-plus'
 const router = useRouter()
 const { $routeNames } = useGlobalProperties()
 
@@ -54,11 +58,7 @@ const submit = () => {
 
       authService.register(regForm)
         .then(() => {
-          ElNotification({
-            title: 'Success',
-            message: 'Confirmation link was sent to your email',
-            type: 'success'
-          })
+          useSuccessNotification('Confirmation link was sent to your email')
           router.push({ name: $routeNames.login })
         })
         .finally(() => (loading.value = false))

@@ -20,9 +20,14 @@
           <el-input v-model="formModel.password" type="password" />
         </el-form-item>
 
-        <el-button native-type="submit" :type="$elComponentType.primary">
-          Login
-        </el-button>
+        <div class="flex justify-between">
+          <el-button native-type="submit" :type="$elComponentType.primary">
+            Login
+          </el-button>
+          <el-button link :type="$elComponentType.primary" @click="$router.push({name: $routeNames.register})">
+            Sign in
+          </el-button>
+        </div>
       </el-form>
     </el-card>
   </div>

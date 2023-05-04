@@ -24,7 +24,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   res => res.data,
   error => {
-    console.log(error)
+    console.log('interceptor', error)
 
     const { logout } = useAuthStore()
     if (error.response.status === 401) {
