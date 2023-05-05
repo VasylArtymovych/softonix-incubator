@@ -1,6 +1,4 @@
 <template>
-  <SectionTitleAndBtns title="Contacts List" />
-
   <div class="grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))] grid gap-5 my-5">
     <ContactItem
       v-for="contact in contacts"

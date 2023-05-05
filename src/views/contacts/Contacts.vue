@@ -1,13 +1,16 @@
 <template>
+  <SectionTitleAndBtns title="Contacts" class="mb-4" />
   <el-tabs v-model="activeTab" type="border-card" @tab-click="handleTabClick">
-    <el-tab-pane label="Contacts list" name="first">
+    <el-tab-pane label="List" name="first">
       <ContactsList :editContact="editContact" />
     </el-tab-pane>
 
-    <el-tab-pane label="Contacts table" name="second">
-      <SectionTitleAndBtns title="Contacts Table" class="mb-4" />
-
+    <el-tab-pane label="Table" name="second">
       <ContactsTable :editContact="editContact" />
+    </el-tab-pane>
+
+    <el-tab-pane label="Empty">
+      <el-empty :image-size="200" description="No data yet"/>
     </el-tab-pane>
   </el-tabs>
 </template>

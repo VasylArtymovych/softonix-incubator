@@ -19,7 +19,7 @@
       </template>
     </el-table-column>
 
-    <el-table-column label="Name" prop="name" sortable width="180">
+    <el-table-column label="Name" prop="name" sortable min-width="180">
       <template #default="{row}">
         <div v-if="editIdArr.has(row.id)" @click.stop>
           <el-input
@@ -33,7 +33,7 @@
       </template>
     </el-table-column>
 
-    <el-table-column label="Description" prop="description" sortable show-overflow-tooltip>
+    <el-table-column label="Description" prop="description" sortable show-overflow-tooltip min-width="250">
       <template #default="{row}">
         <div v-if="editIdArr.has(row.id)" @click.stop>
           <el-input
