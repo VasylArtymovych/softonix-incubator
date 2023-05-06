@@ -7,7 +7,7 @@
   >
     <el-table-column type="index" width="30" />
 
-    <el-table-column label="Image" width="100">
+    <el-table-column label="Image" width="100" align="center">
       <template #default="{row}">
         <el-avatar
           :src="row.image"
@@ -33,7 +33,7 @@
       </template>
     </el-table-column>
 
-    <el-table-column label="Description" prop="description" sortable show-overflow-tooltip min-width="250">
+    <el-table-column label="Description" prop="description" sortable min-width="250">
       <template #default="{row}">
         <div v-if="editIdArr.has(row.id)" @click.stop>
           <el-input
@@ -88,6 +88,70 @@
       </template>
     </el-table-column>
   </el-table>
+
+  <el-divider />
+
+  <TableModule :headings="tableHeadings" :data="filteredContacts" :withBorder="tableBorder">
+    <template #image="{row}">
+      <el-avatar
+        :src="row.image"
+        :alt="`${row.name.replace(/\s/g, '-')}-logo`"
+        class="shrink-0 text-base uppercase"
+      >
+        {{ createAbbreviation(row.name) }}
+      </el-avatar>
+    </template>
+
+    <template #name="{row}">
+      <div v-if="editIdArr.has(row.id)" @click.stop>
+        <el-input
+          ref="inputRef"
+          v-model="editableContacts.get(row.id)!.name"
+          clearable
+          placeholder="User name"
+        />
+      </div>
+      <p v-else>{{ row.name }}</p>
+    </template>
+
+    <template #actions>
+      <el-button-group @click.stop>
+        <el-button class="">
+          <template #icon><IconEnvelope /></template>
+          Email
+        </el-button>
+        <el-button class="phone">
+          <template #icon><IconPhone /></template>
+          Phone
+        </el-button>
+      </el-button-group>
+    </template>
+
+    <template #Buttons>
+      <el-input v-model="searchName" :size="$elComponentSize.small" clearable placeholder="Search by name" />
+    </template>
+
+    <template #buttons="{row}">
+      <template v-if="editIdArr.has(row.id)">
+        <el-button size="small" :type="$elComponentType.danger" @click.stop="handleCancel(row)">
+          Cancel
+        </el-button>
+
+        <el-button size="small" @click.stop="handleSave(row)">
+          Save
+        </el-button>
+      </template>
+      <template v-else>
+        <el-button size="small" @click.stop="handleEdit(row)">
+          Edit
+        </el-button>
+
+        <el-button size="small" :type="$elComponentType.danger" @click.stop="deleteContact(row)">
+          Delete
+        </el-button>
+      </template>
+    </template>
+  </TableModule>
 </template>
 
 <script setup lang="ts">
@@ -96,6 +160,15 @@ import { createAbbreviation } from '../contacts.helpers'
 defineProps<{
   editContact: (contact: IContact) => void
 }>()
+
+const tableHeadings: ITableHeading[] = [
+  { label: 'Image', value: 'image', width: 100, align: 'center' },
+  { label: 'Name', value: 'name', sortable: true, minWidth: 180 },
+  { label: 'Description', value: 'description', sortable: true, minWidth: 250, align: 'left', showOverflowTooltip: true },
+  { label: 'Date', value: 'date', width: 100, isDate: true },
+  { label: 'Actions', value: 'actions', width: 210 },
+  { label: 'Buttons', value: 'buttons', width: 200, fixed: 'right', align: 'right' }
+]
 
 const contactsStore = useContactsStore()
 const { contacts } = storeToRefs(contactsStore)
@@ -133,3 +206,12 @@ const handleSave = (row: IContact) => {
   editableContacts.value.delete(row.id)
 }
 </script>
+
+<style lang="scss">
+.el-table {
+  &__body-wrapper, &__header-wrapper {
+    @apply overflow-visible #{!important}
+  }
+  @apply overflow-auto #{!important}
+}
+</style>
