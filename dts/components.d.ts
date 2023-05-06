@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     AppButton: typeof import('./../src/components/AppButton.vue')['default']
     AppInput: typeof import('./../src/components/AppInput.vue')['default']
     AppTable: typeof import('./../src/views/contacts/components/AppTable.vue')['default']
+    AppTabs: typeof import('./../src/components/AppTabs.vue')['default']
     Card: typeof import('./../src/components/Card.vue')['default']
     ContactItem: typeof import('./../src/views/contacts/components/ContactItem.vue')['default']
     ContactsList: typeof import('./../src/views/contacts/components/ContactsList.vue')['default']
