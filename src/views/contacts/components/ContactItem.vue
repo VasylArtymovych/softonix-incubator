@@ -116,6 +116,7 @@ function onSave () {
   if (isContactDataChanged(localContact.value, props.contact)) {
     loading.value = true
     contactsService.updateContact(localContact.value)
+      .catch(error => (useErrorNotification(error.message || 'Unable to update contact.')))
       .finally(() => {
         editMode.value = false
         loading.value = false
@@ -126,12 +127,8 @@ function onSave () {
 
 function onDelete () {
   contactsService.deleteContact(props.contact)
+    .catch(error => (useErrorNotification(error.message || 'Unable to delete contact.')))
 }
-
-// function contactDataChanged () {
-//   return localContact.value.name !== props.contact.name ||
-//   localContact.value.description !== props.contact.description
-// }
 
 const nameAbbrv = computed(() => {
   return props.contact.name.split(' ').reduce((acc, cur) => {

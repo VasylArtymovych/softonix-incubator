@@ -10,8 +10,8 @@ class AuthService {
   }
 
   // auth/v1/token?grant_type=refresh_token / { refresh_token: "the-refresh-token" }
-  refreshToken (payload: string) {
-    return useHttp.post('auth/v1/token?grant_type=refresh_token', payload)
+  refreshToken (refreshToken: string) {
+    return useHttp.post('auth/v1/token?grant_type=refresh_token', { refresh_token: refreshToken })
   }
 }
 

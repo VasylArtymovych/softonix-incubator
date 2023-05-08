@@ -2,29 +2,33 @@ import { routeNames, router } from '@/router'
 
 export const useAuthStore = defineStore('authStore', () => {
   const accessToken = ref(localStorage.getItem('si-token'))
-  const refreshToken = ref('')
+  const refreshToken = ref(localStorage.getItem('rfsh-token'))
 
-  function setToken (token: string, refreshTok: string) {
+  function setTokens (token: string, rfshToken: string) {
     accessToken.value = token
     localStorage.setItem('si-token', token)
-    refreshToken.value = refreshTok
+
+    refreshToken.value = rfshToken
+    localStorage.setItem('rfsh-token', rfshToken)
   }
 
   function login (payload: ILoginRequest) {
     return authService.login(payload)
       .then((res) => {
-        console.log(res)
-        setToken(res.access_token, res.refresh_token)
+        setTokens(res.access_token, res.refresh_token)
       })
   }
 
   function logout () {
     localStorage.removeItem('si-token')
+    localStorage.removeItem('rfsh-token')
     window.location.href = router.resolve(routeNames.login).href
   }
 
   return {
     accessToken,
+    refreshToken,
+    setTokens,
     login,
     logout
   }

@@ -25,8 +25,7 @@ class ContactsService {
     const { updateContact } = useContactsStore()
 
     return useHttp.patch(`rest/v1/contacts?id=eq.${payload.id}`, payload)
-      .then(res => {
-        console.log(res)
+      .then(() => {
         updateContact(payload)
         useSuccessNotification('Contact successfully updated')
       })

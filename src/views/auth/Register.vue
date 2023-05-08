@@ -61,6 +61,9 @@ const submit = () => {
           useSuccessNotification('Confirmation link was sent to your email')
           router.push({ name: $routeNames.login })
         })
+        .catch(error => {
+          useSuccessNotification(error.message + ' Try again later.')
+        })
         .finally(() => (loading.value = false))
     }
   })
