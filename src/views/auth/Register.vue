@@ -62,7 +62,7 @@ const submit = () => {
           router.push({ name: $routeNames.login })
         })
         .catch(error => {
-          useSuccessNotification(error.message + ' Try again later.')
+          useSuccessNotification(error.message)
         })
         .finally(() => (loading.value = false))
     }
