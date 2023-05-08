@@ -31,6 +31,13 @@
       @save="updateContact"
     />
   </div>
+  <div>
+    <div v-for="item in 10" :key="item" class="w-[350px] h-[220px] bg-slate-300 mb-3">{{ item }}</div>
+    <LazyImg
+      src="https://shadow.elemecdn.com/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+      alt="image"
+    />
+  </div>
 </template>
 
 <script lang="ts" setup>
