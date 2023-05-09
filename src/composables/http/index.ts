@@ -8,7 +8,27 @@ const instance = axios.create({
 })
 
 instance.interceptors.request.use(
-  config => {
+  async config => {
+    const { refreshToken, tokenExpiresInTime, setTokens, logout } = useAuthStore()
+
+    // check and refresh token 10 min before expire time
+    if (Date.now() >= Number(tokenExpiresInTime) - 10 * 60 * 1000 && refreshToken) {
+      try {
+        const res = await authService.refreshToken(refreshToken)
+
+        setTokens(res.access_token, res.refresh_token, res.expires_in)
+
+        config.headers = {
+          ...config.headers,
+          authorization: `Bearer ${res.access_token}`
+        }
+
+        return config
+      } catch (error) {
+        logout()
+      }
+    }
+
     const { accessToken } = useAuthStore()
     if (accessToken) {
       config.headers = {
@@ -25,24 +45,24 @@ instance.interceptors.response.use(
 
   async error => {
     const { refreshToken, setTokens, logout } = useAuthStore()
-    if (error.response.status === 401 && error.response.data.message === 'JWT expired' && refreshToken) {
-      try {
-        const res = await authService.refreshToken(refreshToken)
+    // if (error.response.status === 401 && error.response.data.message === 'JWT expired' && refreshToken) {
+    //   try {
+    //     const res = await authService.refreshToken(refreshToken)
 
-        setTokens(res.access_token, res.refresh_token)
+    //     setTokens(res.access_token, res.refresh_token)
 
-        error.config.headers = {
-          ...error.config.headers,
-          authorization: `Bearer ${res.access_token}`
-        }
+    //     error.config.headers = {
+    //       ...error.config.headers,
+    //       authorization: `Bearer ${res.access_token}`
+    //     }
 
-        return instance(error.config)
-      } catch (error) {
-        logout()
-      }
-    }
+    //     return instance(error.config)
+    //   } catch (error) {
+    //     logout()
+    //   }
+    // }
 
-    if (error.response.status === 401 && refreshToken) {
+    if (error.response.status === 401) {
       return logout()
     }
 

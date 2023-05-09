@@ -17,7 +17,7 @@
         </el-form-item>
 
         <el-form-item label="Password" prop="password">
-          <el-input v-model="formModel.password" type="password" />
+          <el-input v-model="formModel.password" type="password" show-password />
         </el-form-item>
 
         <div class="flex justify-between">
@@ -25,7 +25,7 @@
             Login
           </el-button>
           <el-button link :type="$elComponentType.primary" @click="$router.push({name: $routeNames.register})">
-            Sign in
+            Sign Up
           </el-button>
         </div>
       </el-form>

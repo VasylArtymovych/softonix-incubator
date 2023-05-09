@@ -17,12 +17,12 @@
         </el-form-item>
 
         <el-form-item label="User password" prop="password">
-          <el-input v-model="regForm.password" />
+          <el-input v-model="regForm.password" type="password" show-password />
         </el-form-item>
 
         <div class="flex justify-between">
           <el-button native-type="submit" :type="$elComponentType.primary">
-            Sign in
+            Sign Up
           </el-button>
           <el-button link :type="$elComponentType.primary" @click="$router.push({name: $routeNames.login})">
             Login
