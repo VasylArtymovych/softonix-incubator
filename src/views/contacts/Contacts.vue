@@ -1,6 +1,8 @@
 <template>
   <div class="flex items-center gap-4">
-    <h3 class="font-medium m-0">Contact list</h3>
+    <RouterLink :to="$routeNames.rootPage">
+      <h3 class="font-medium m-0">Contact list</h3>
+    </RouterLink>
 
     <el-button :type="$elComponentType.primary" @click="createNewContact">
       <template #icon>
@@ -30,23 +32,6 @@
       @delete="deleteContact"
       @save="updateContact"
     />
-  </div>
-  <div>
-    <div v-for="item in 3" :key="item" class="w-[350px] h-[220px] bg-slate-300 mb-3">{{ item }}</div>
-    <LazyImg
-      src="	https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
-      alt="image"
-      class="w-full h-full"
-    />
-    <div v-for="item in 3" :key="item" class="w-[350px] h-[220px] bg-slate-300 mb-3">{{ item }}</div>
-
-    <div v-for="item in 3" :key="item" class="w-[350px] h-[220px] bg-slate-300 mb-3">
-      <LazyImg
-        src="https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg"
-        alt="image"
-        class="w-full h-full"
-      />
-    </div>
   </div>
 </template>
 

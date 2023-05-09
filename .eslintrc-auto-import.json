@@ -71,6 +71,7 @@
     "useEmailRule": true,
     "useGlobalProperties": true,
     "useHttp": true,
+    "useLazyLoadInterceptor": true,
     "useLink": true,
     "useMaxLenRule": true,
     "useMinLenRule": true,

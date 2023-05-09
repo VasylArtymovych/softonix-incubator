@@ -3,6 +3,7 @@ import type { RouteRecordRaw } from 'vue-router'
 import { routeNames } from './route-names'
 import { contactsRoutes } from '@/views/contacts/contacts.routes'
 import { authRoutes } from '@/views/auth/auth.routes'
+import Home from '@/views/home/Home.vue'
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -12,7 +13,7 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: routeNames.rootPage,
-    redirect: { name: routeNames.contacts }
+    component: Home
   },
 
   ...authRoutes,

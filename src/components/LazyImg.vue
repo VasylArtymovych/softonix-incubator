@@ -6,10 +6,11 @@
       />
       <img
         :src="imgSrc"
+        :alt=" alt || 'image'"
         lazy
         class="absolute top-0 left-0 object-center object-cover w-full h-full"
-        @load="isLoaded = true"
-        @error="isError = true"
+        @load="onLoad"
+        @error="onError"
       >
     </div>
   </div>
@@ -23,11 +24,22 @@ const props = defineProps<{
   alt?: string
 }>()
 
+const emit = defineEmits(['load', 'error'])
+
 const isVisible = ref(false)
 const isLoaded = ref(false)
 const isError = ref(false)
 
 const imgSrc = computed(() => (isError.value ? placeholder : props.src))
+
+const onLoad = () => {
+  isLoaded.value = true
+  emit('load')
+}
+const onError = () => {
+  isError.value = true
+  emit('error')
+}
 
 const vIntersection = {
   mounted (el: HTMLDivElement) {
