@@ -1,13 +1,15 @@
 <template>
-  <div v-intersection class="max-w-[350px] md:max-w-none h-[220px]">
-    <div v-if="isVisible" class="w-full h-full bg-gray-300">
-      <div v-if="!isLoaded" class="w-full h-full bg-blue-300 text-center">Skeleton</div>
+  <div v-intersection>
+    <div v-if="isVisible" class="relative w-full h-full bg-gray-300">
+      <div
+        v-if="!isLoaded" class="skeleton w-full h-full bg-gray-medium"
+      />
       <img
         :src="imgSrc"
         lazy
-        class="object-center object-cover"
-        @load="onLoad"
-        @error="onError"
+        class="absolute top-0 left-0 object-center object-cover w-full h-full"
+        @load="isLoaded = true"
+        @error="isError = true"
       >
     </div>
   </div>
@@ -26,16 +28,6 @@ const isLoaded = ref(false)
 const isError = ref(false)
 
 const imgSrc = computed(() => (isError.value ? placeholder : props.src))
-
-const onLoad = () => {
-  console.log('leaded')
-  isLoaded.value = true
-}
-const onError = () => {
-  console.log('Error')
-  isLoaded.value = true
-  isError.value = true
-}
 
 const vIntersection = {
   mounted (el: HTMLDivElement) {
@@ -56,3 +48,59 @@ const vIntersection = {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .skeleton {
+    background: linear-gradient(
+      to right,
+      #94a3b8,
+      #cbd5e1 0%,
+      #94a3b8
+    );
+
+    animation: waves 1s linear infinite alternate;
+  }
+
+  @keyframes waves {
+    20% {
+      background: linear-gradient(
+      to right,
+      #94a3b8,
+      #cbd5e1 20%,
+      #94a3b8
+    );
+    }
+    40% {
+      background: linear-gradient(
+      to right,
+      #94a3b8,
+      #cbd5e1 40%,
+      #94a3b8
+    );
+    }
+    60% {
+      background: linear-gradient(
+      to right,
+      #94a3b8,
+      #cbd5e1 60%,
+      #94a3b8
+    );
+    }
+    80% {
+      background: linear-gradient(
+      to right,
+      #94a3b8,
+      #cbd5e1 80%,
+      #94a3b8
+    );
+    }
+    100% {
+      background: linear-gradient(
+      to right,
+      #94a3b8,
+      #cbd5e1 100%,
+      #94a3b8
+    );
+    }
+  }
+</style>

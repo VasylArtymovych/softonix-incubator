@@ -32,11 +32,21 @@
     />
   </div>
   <div>
-    <div v-for="item in 10" :key="item" class="w-[350px] h-[220px] bg-slate-300 mb-3">{{ item }}</div>
+    <div v-for="item in 3" :key="item" class="w-[350px] h-[220px] bg-slate-300 mb-3">{{ item }}</div>
     <LazyImg
-      src="https://shadow.elemecdn.com/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+      src="	https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
       alt="image"
+      class="w-full h-full"
     />
+    <div v-for="item in 3" :key="item" class="w-[350px] h-[220px] bg-slate-300 mb-3">{{ item }}</div>
+
+    <div v-for="item in 3" :key="item" class="w-[350px] h-[220px] bg-slate-300 mb-3">
+      <LazyImg
+        src="https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg"
+        alt="image"
+        class="w-full h-full"
+      />
+    </div>
   </div>
 </template>
 
