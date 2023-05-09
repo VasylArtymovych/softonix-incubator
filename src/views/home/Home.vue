@@ -30,16 +30,12 @@ const images = [
   '',
   'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
   'https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg',
+  '',
   'https://thumbs.dreamstime.com/b/beautiful-rain-for…-doi-inthanon-national-park-thailand-36703721.jpg',
   'https://thumbs.dreamstime.com/z/sunflower-field-su…lower-field-sunset-beautiful-nature-121481703.jpg',
   'https://thumbs.dreamstime.com/b/amazing-nature-lan…background-amazing-nature-landscape-147189513.jpg',
   '',
-  'https://media.istockphoto.com/id/491712724/photo/r…20&c=aCPXbqIafa9tqG3AmYekZvYQoOGOIKXs0wxBbtt_Y7U=',
+  'https://images.pexels.com/photos/6015987/pexels-photo-6015987.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   ''
-
 ]
 </script>
-
-<style scoped>
-
-</style>

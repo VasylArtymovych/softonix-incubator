@@ -72,7 +72,6 @@ declare global {
   const useEmailRule: typeof import('../src/composables/form-config')['useEmailRule']
   const useGlobalProperties: typeof import('../src/composables/global-properties')['useGlobalProperties']
   const useHttp: typeof import('../src/composables/http/index')['useHttp']
-  const useLazyLoadInterceptor: typeof import('../src/composables/lazy-load-interceptor')['useLazyLoadInterceptor']
   const useLink: typeof import('vue-router')['useLink']
   const useMaxLenRule: typeof import('../src/composables/form-config')['useMaxLenRule']
   const useMinLenRule: typeof import('../src/composables/form-config')['useMinLenRule']
