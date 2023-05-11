@@ -9,14 +9,15 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   async config => {
-    const { refreshToken, tokenExpiresInTime, setTokens, logout } = useAuthStore()
+    const { tokenData, setTokens, logout } = useAuthStore()
 
-    // check and refresh token 10 min before expire time
-    if (Date.now() >= Number(tokenExpiresInTime) - 10 * 60 * 1000 && refreshToken) {
+    // check and refresh token 5 min before expire time
+    if (Number(tokenData.tokenExpiresInTime) < (Date.now() + 5 * 60 * 1000) && tokenData.accessToken &&
+    tokenData.refreshToken) {
       try {
-        const res = await authService.refreshToken(refreshToken)
-
-        setTokens(res.access_token, res.refresh_token, res.expires_in)
+        tokenData.accessToken = ''
+        const res = await authService.refreshToken(tokenData.refreshToken)
+        setTokens(res)
 
         config.headers = {
           ...config.headers,
@@ -29,11 +30,10 @@ instance.interceptors.request.use(
       }
     }
 
-    const { accessToken } = useAuthStore()
-    if (accessToken) {
+    if (tokenData.accessToken) {
       config.headers = {
         ...config.headers,
-        authorization: `Bearer ${accessToken}`
+        authorization: `Bearer ${tokenData.accessToken}`
       }
     }
     return config
@@ -44,7 +44,7 @@ instance.interceptors.response.use(
   res => res.data,
 
   async error => {
-    const { refreshToken, setTokens, logout } = useAuthStore()
+    const { logout } = useAuthStore()
     // if (error.response.status === 401 && error.response.data.message === 'JWT expired' && refreshToken) {
     //   try {
     //     const res = await authService.refreshToken(refreshToken)
@@ -63,7 +63,7 @@ instance.interceptors.response.use(
     // }
 
     if (error.response.status === 401) {
-      return logout()
+      logout()
     }
 
     return Promise.reject(error)

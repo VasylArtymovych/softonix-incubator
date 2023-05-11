@@ -9,9 +9,9 @@ export const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const { accessToken, logout } = useAuthStore()
+  const { tokenData, logout } = useAuthStore()
 
-  if (!accessToken && to.meta.isProtected) {
+  if (!tokenData.accessToken && to.meta.isProtected) {
     next(false)
     return logout()
   }
