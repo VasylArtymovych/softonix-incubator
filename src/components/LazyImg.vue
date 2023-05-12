@@ -1,9 +1,15 @@
 <template>
   <div v-intersection>
     <div v-if="isVisible" class="relative w-full h-full bg-gray-300">
-      <div
+      <!-- <div
         v-if="!isLoaded" class="skeleton w-full h-full bg-gray-medium"
-      />
+      /> -->
+      <el-skeleton :loading="!isLoaded" animated class="w-full h-full">
+        <template #template>
+          <el-skeleton-item variant="image" class="w-full h-full" />
+        </template>
+      </el-skeleton>
+
       <img
         :src="imgSrc"
         :alt=" alt || 'image'"
